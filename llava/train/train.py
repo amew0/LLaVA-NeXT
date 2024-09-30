@@ -1152,8 +1152,8 @@ class LazySupervisedDataset(Dataset):
 
         elif "video" in sources[0]:
             video_file = self.list_data_dict[i]["video"]
-            video_folder = self.data_args.video_folder
-            video_file = os.path.join(video_folder, video_file)
+            # video_folder = self.data_args.video_folder
+            # video_file = os.path.join(video_folder, video_file)
             suffix = video_file.split(".")[-1]
             if not os.path.exists(video_file):
                 print("File {} not exist!".format(video_file))
@@ -1418,7 +1418,7 @@ def get_model(model_args, training_args, bnb_model_from_pretrained_args):
                 model = LlavaQwenForCausalLM.from_pretrained(
                     model_args.model_name_or_path,
                     cache_dir=training_args.cache_dir,
-                    attn_implementation=training_args.attn_implementation,
+                    # attn_implementation=training_args.attn_implementation,
                     torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
                     low_cpu_mem_usage=False,
                     **customized_kwargs,

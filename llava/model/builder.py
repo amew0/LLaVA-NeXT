@@ -26,6 +26,7 @@ from llava.utils import rank0_print
 
 def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", attn_implementation="flash_attention_2", customized_config=None, overwrite_config=None, **kwargs):
     kwargs["device_map"] = device_map
+    kwargs["cache_dir"] = "/dpc/kunf0097/cache/models"
 
     if load_8bit:
         kwargs["load_in_8bit"] = True
@@ -44,6 +45,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
             kwargs.pop("multimodal")
     else:
         is_multimodal = False
+    print(kwargs)
 
     if "llava" in model_name.lower() or is_multimodal:
         # Load LLaVA model
