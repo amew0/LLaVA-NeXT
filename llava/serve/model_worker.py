@@ -58,7 +58,7 @@ class ModelWorker:
             self.model_name = model_name
 
         logger.info(f"Loading the model {self.model_name} on worker {worker_id} ...")
-        self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(model_path, model_base, self.model_name, load_8bit, load_4bit)
+        self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(model_path, model_base, self.model_name, load_8bit, load_4bit, attn_implementation=None)
         self.is_multimodal = "llava" in self.model_name.lower()
 
         if not no_register:
