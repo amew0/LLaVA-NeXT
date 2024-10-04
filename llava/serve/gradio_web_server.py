@@ -17,9 +17,9 @@ logger = build_logger("gradio_web_server", "gradio_web_server.log")
 
 headers = {"User-Agent": "LLaVA Client"}
 
-no_change_btn = gr.Button.update()
-enable_btn = gr.Button.update(interactive=True)
-disable_btn = gr.Button.update(interactive=False)
+no_change_btn = gr.Button(value="No Change", interactive=False)
+enable_btn = gr.Button(value="Enable", interactive=True)
+disable_btn = gr.Button(value="Disable", interactive=False)
 
 priority = {
     "vicuna-13b": "aaaaaaa",
@@ -56,11 +56,11 @@ function() {
 def load_demo(url_params, request: gr.Request):
     logger.info(f"load_demo. ip: {request.client.host}. params: {url_params}")
 
-    dropdown_update = gr.Dropdown.update(visible=True)
+    dropdown_update = gr.Dropdown(visible=True)
     if "model" in url_params:
         model = url_params["model"]
         if model in models:
-            dropdown_update = gr.Dropdown.update(value=model, visible=True)
+            dropdown_update = gr.Dropdown(value=model, visible=True)
 
     state = default_conversation.copy()
     return state, dropdown_update
@@ -70,7 +70,7 @@ def load_demo_refresh_model_list(request: gr.Request):
     logger.info(f"load_demo. ip: {request.client.host}")
     models = get_model_list()
     state = default_conversation.copy()
-    dropdown_update = gr.Dropdown.update(choices=models, value=models[0] if len(models) > 0 else "")
+    dropdown_update = gr.Dropdown(choices=models, value=models[0] if len(models) > 0 else "")
     return state, dropdown_update
 
 
@@ -439,4 +439,5 @@ if __name__ == "__main__":
 
     logger.info(args)
     demo = build_demo(args.embed)
-    demo.queue(concurrency_count=args.concurrency_count, api_open=False).launch(server_name=args.host, server_port=args.port, share=args.share)
+    # demo.queue(concurrency_count=args.concurrency_count, api_open=False).launch(server_name=args.host, server_port=args.port, share=args.share)
+    demo.queue(api_open=False).launch(server_name=args.host, server_port=args.port, share=args.share)
