@@ -72,3 +72,5 @@ playground/*.json
 mlx_configs/
 data_processing/
 # demo/
+outerr/
+out/
