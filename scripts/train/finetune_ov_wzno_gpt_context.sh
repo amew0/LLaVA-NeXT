@@ -25,8 +25,9 @@ RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
 
+CUDA_VISIBLE_DEVICES=0,2,3
 # ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
-ACCELERATE_CPU_AFFINITY=1 accelerate launch \
+ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc.yaml --gpu_ids 0,2,3 \
     llava/train/train_mem.py \
     --deepspeed scripts/zero3.json \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \
@@ -72,5 +73,7 @@ ACCELERATE_CPU_AFFINITY=1 accelerate launch \
     --verbose_logging True \
     --fp16 True \
     --lora_enable ${LORA_ENABLE} \
-    --frames_upbound 32
+    --lora_r 16 \
+    --frames_upbound 32 \
+    # --bits 8
 exit 0;

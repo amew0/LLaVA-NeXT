@@ -13,12 +13,14 @@ from decord import VideoReader, cpu
 
 warnings.filterwarnings("ignore")
 
+for_s3 = True
+
 model_base =  None
 model_name = "llava_qwen"
 # device_map = "auto"
 device_map = {"":0}
 
-model_path = "/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s1-1015_215421"
+model_path = "/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s3-1015_162353"
 tokenizer, model, image_processor, max_length = load_pretrained_model_simplified(model_path, model_base, model_name, device_map=device_map, attn_implementation=None)
 
 # Function to extract frames from video
@@ -47,7 +49,7 @@ def compare_expected_and_generated(expected_paragraph, generated_paragraph, toke
     return loss.item()
 
 import json
-examples_path = "data/test_wz.json"
+examples_path = "data/test_s3.json"
 with open(examples_path) as f:
     examples = json.load(f)
 
@@ -62,28 +64,30 @@ data_to_save = {
 }
 
 for i, ex in tqdm(enumerate(examples)):
-    # Load and process video
-    video_path = ex["video"]
-    video_frames = load_video(video_path, 16)
-    
-    # Prepare the frames for the model
-    frames = image_processor.preprocess(video_frames, return_tensors="pt")["pixel_values"]
-    if device_map != "auto":
-        frames = frames.half().cuda()
-    image_tensors = [frames]
+    if not for_s3:
+        # Load and process video
+        video_path = ex["video"]
+        video_frames = load_video(video_path, 16)
+        
+        # Prepare the frames for the model
+        frames = image_processor.preprocess(video_frames, return_tensors="pt")["pixel_values"]
+        if device_map != "auto":
+            frames = frames.half().cuda()
+        image_tensors = [frames]
     
     # Prepare conversation input
     conv_template = "qwen_1_5"
     instruction = ex["conversations"][0]["value"]
-    # context = ex["conversations"][1]["value"]
     conv = copy.deepcopy(conv_templates[conv_template])
     conv.append_message(conv.roles[0], instruction)
-    # conv.append_message(conv.roles[0], context)
+    if for_s3:
+        context = ex["conversations"][1]["value"]
+        conv.append_message(conv.roles[0], context)
     conv.append_message(conv.roles[1], None)
     prompt_question = conv.get_prompt()
     
     input_ids = tokenizer_image_token(prompt_question, tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).to(model.device)
-    image_sizes = [frame.size for frame in video_frames]
+    # image_sizes = [frame.size for frame in video_frames]
 
     # Generate response
     cont = model.generate(
@@ -95,6 +99,16 @@ for i, ex in tqdm(enumerate(examples)):
         max_new_tokens=256,
         modalities=["video"],
     )
+    if for_s3:
+        cont = model.generate(
+            input_ids,
+            # images=image_tensors,
+            # image_sizes=image_sizes,
+            do_sample=False,
+            temperature=0,
+            max_new_tokens=256,
+            # modalities=["video"],
+        )
     text_outputs = tokenizer.batch_decode(cont, skip_special_tokens=True)
     generated_text = text_outputs[0]  # Holds the model's prediction
 
@@ -102,6 +116,10 @@ for i, ex in tqdm(enumerate(examples)):
     expected_text = ex["conversations"][2]["value"]
     loss = compare_expected_and_generated(expected_text, generated_text, tokenizer, model)
     losses.append(loss)
+    
+    if (i == 0):
+        print(f"Expected: {expected_text}")
+        print(f"Generated: {generated_text}")
     
     # print(f"{i}/{len(examples)} L: {loss}")
 

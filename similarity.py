@@ -8,6 +8,8 @@ def calculate_loss_statistics(csv_file_path):
     std_loss = np.std(losses)
     return average_loss, std_loss
 
-csv_file_path = "out/results_test_s3.json_lora-llava-qwen-ov-s3-1015_021808.csv"
-av, std = calculate_loss_statistics(csv_file_path)
-print(f'Average Loss, Standard Deviation {av:.4f}, {std:.4f}')
+if __name__ == "__main__":
+    import sys
+    csv_file_path = sys.argv[1]
+    av, std = calculate_loss_statistics(csv_file_path)
+    print(f'Average Loss, Standard Deviation {av:.4f}, {std:.4f}')
