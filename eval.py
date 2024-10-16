@@ -102,12 +102,9 @@ for i, ex in tqdm(enumerate(examples)):
     if for_s3:
         cont = model.generate(
             input_ids,
-            # images=image_tensors,
-            # image_sizes=image_sizes,
             do_sample=False,
             temperature=0,
             max_new_tokens=256,
-            # modalities=["video"],
         )
     text_outputs = tokenizer.batch_decode(cont, skip_special_tokens=True)
     generated_text = text_outputs[0]  # Holds the model's prediction

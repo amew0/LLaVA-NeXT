@@ -11,7 +11,7 @@ VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
 PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-wzno-1007_102328"
 RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s3-$(date +%m%d_%H%M%S)"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/train_s3.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s3_train.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
