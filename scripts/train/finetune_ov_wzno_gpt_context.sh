@@ -1,15 +1,15 @@
-export OMP_NUM_THREADS=8
+export OMP_NUM_THREADS=1
 export NCCL_IB_DISABLE=0
 export NCCL_IB_GID_INDEX=3
-export NCCL_SOCKET_IFNAME=$(ifconfig | awk '/^[a-z]/ {gsub(/:/, ""); print $1; exit}') # get the first socket name from ifconfig without colon
+export NCCL_SOCKET_IFNAME=$(ifconfig | awk '/^[a-z]/ {gsub(/:/, ""); print $1; exit}')
 export NCCL_DEBUG=INFO
 
 PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-wz-1004_123605"
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-wzno-$(date +%m%d_%H%M%S)"
+PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s1-1015_215421"
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s2-$(date +%m%d_%H%M%S)"
 
 DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/train_wzno.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
@@ -25,8 +25,8 @@ RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
 
-# CUDA_VISIBLE_DEVICES=1
-ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
+# ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
+ACCELERATE_CPU_AFFINITY=1 accelerate launch \
     llava/train/train_mem.py \
     --deepspeed scripts/zero3.json \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \
@@ -47,13 +47,13 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NN
     --bf16 False \
     --run_name $RUN_NAME \
     --output_dir ${OUTPUT_DIR} \
-    --num_train_epochs 1 \
+    --num_train_epochs 10 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 2 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
-    --save_steps 1000 \
+    --save_steps 0.1 \
     --save_total_limit 1 \
     --learning_rate 1e-5 \
     --weight_decay 0. \

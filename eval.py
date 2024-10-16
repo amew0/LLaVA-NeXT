@@ -18,7 +18,7 @@ model_name = "llava_qwen"
 # device_map = "auto"
 device_map = {"":0}
 
-model_path = "lmms-lab/llava-onevision-qwen2-0.5b-ov"
+model_path = "/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s1-1015_215421"
 tokenizer, model, image_processor, max_length = load_pretrained_model_simplified(model_path, model_base, model_name, device_map=device_map, attn_implementation=None)
 
 # Function to extract frames from video
@@ -47,11 +47,11 @@ def compare_expected_and_generated(expected_paragraph, generated_paragraph, toke
     return loss.item()
 
 import json
-examples_path = "data/test_wzno.json"
+examples_path = "data/test_wz.json"
 with open(examples_path) as f:
     examples = json.load(f)
 
-csv_file = f"out/results_{examples_path.split('/')[-1]}_{model_path.split('/')[-1]}.csv"
+csv_file = f"out/{examples_path.split('/')[-1].split('.')[0]}_{model_path.split('/')[-1]}.csv"
 print(csv_file)
 
 losses = []
@@ -74,9 +74,11 @@ for i, ex in tqdm(enumerate(examples)):
     
     # Prepare conversation input
     conv_template = "qwen_1_5"
-    question = ex["conversations"][0]["value"]
+    instruction = ex["conversations"][0]["value"]
+    # context = ex["conversations"][1]["value"]
     conv = copy.deepcopy(conv_templates[conv_template])
-    conv.append_message(conv.roles[0], question)
+    conv.append_message(conv.roles[0], instruction)
+    # conv.append_message(conv.roles[0], context)
     conv.append_message(conv.roles[1], None)
     prompt_question = conv.get_prompt()
     
@@ -97,11 +99,11 @@ for i, ex in tqdm(enumerate(examples)):
     generated_text = text_outputs[0]  # Holds the model's prediction
 
     # Compare expected and generated outputs
-    expected_text = ex["conversations"][1]["value"]
+    expected_text = ex["conversations"][2]["value"]
     loss = compare_expected_and_generated(expected_text, generated_text, tokenizer, model)
     losses.append(loss)
     
-    print(f"{i}/{len(examples)} G: {generated_text}, E: {expected_text}, L: {loss}")
+    # print(f"{i}/{len(examples)} L: {loss}")
 
     data_to_save["expected"].append(expected_text)
     data_to_save["generated"].append(generated_text)
