@@ -5,12 +5,12 @@ deepspeed_config:
   zero3_init_flag: false
 distributed_type: DEEPSPEED
 downcast_bf16: 'no'
-enable_cpu_affinity: false
+# enable_cpu_affinity: false
 machine_rank: 0
 main_training_function: main
 num_machines: 1
-num_processes: 3
-gpu_ids: 0,2,3
+# num_processes: 2
+gpu_ids: all
 rdzv_backend: static
 same_network: true
 tpu_env: []

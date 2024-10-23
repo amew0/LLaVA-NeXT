@@ -1,4 +1,4 @@
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=4
 export NCCL_IB_DISABLE=0
 export NCCL_IB_GID_INDEX=3
 export NCCL_SOCKET_IFNAME=$(ifconfig | awk '/^[a-z]/ {gsub(/:/, ""); print $1; exit}') # get the first socket name from ifconfig without colon
@@ -8,9 +8,9 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-wzno-1007_102328"
+PREV_STAGE_CHECKPOINT="amew0/llava-qwen-ov-s2-1016_100248"
 RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s3-$(date +%m%d_%H%M%S)"
-
+# RUN_NAME="lora-llava-qwen-ov-s3-1016_203220"
 DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s3_train.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
@@ -25,8 +25,13 @@ RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
 
-# ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
-ACCELERATE_CPU_AFFINITY=1 accelerate launch \
+
+
+# accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc.yaml \
+# deepspeed --hostfile scripts/train/hostfiles \
+    # --num_gpus="${NUM_GPUS}" --num_nodes="${NNODES}" \
+ACCELERATE_CPU_AFFINITY=1 
+torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
  llava/train/train_mem.py \
     --deepspeed scripts/zero3.json \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \
@@ -62,7 +67,7 @@ ACCELERATE_CPU_AFFINITY=1 accelerate launch \
     --tf32 False \
     --model_max_length 32768 \
     --gradient_checkpointing True \
-    --dataloader_num_workers 1 \
+    --dataloader_num_workers ${NUM_GPUS} \
     --lazy_preprocess True \
     --report_to wandb \
     --torch_compile True \

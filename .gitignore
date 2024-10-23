@@ -75,4 +75,5 @@ data_processing/
 outerr/
 out/
 
-ray/
+# ray/
+*env

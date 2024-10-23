@@ -1447,6 +1447,7 @@ def get_model(model_args, training_args, bnb_model_from_pretrained_args):
 
 
 def train(attn_implementation=None):
+    print("!!Inside train function!!")
     global local_rank
 
     parser = transformers.HfArgumentParser((ModelArguments, DataArguments, TrainingArguments))
@@ -1692,6 +1693,7 @@ def train(attn_implementation=None):
 
     data_module = make_supervised_data_module(tokenizer=tokenizer, data_args=data_args)
     trainer = LLaVATrainer(model=model, tokenizer=tokenizer, args=training_args, **data_module)
+    torch.cuda.empty_cache()
 
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):
         trainer.train(resume_from_checkpoint=True)
