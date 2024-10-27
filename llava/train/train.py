@@ -1420,7 +1420,7 @@ def get_model(model_args, training_args, bnb_model_from_pretrained_args):
                     cache_dir=training_args.cache_dir,
                     # attn_implementation=training_args.attn_implementation,
                     torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
-                    low_cpu_mem_usage=False,
+                    low_cpu_mem_usage=True,
                     **customized_kwargs,
                 )
         elif "gemma" in model_args.model_name_or_path.lower():
@@ -1470,14 +1470,15 @@ def train(attn_implementation=None):
         bnb_model_from_pretrained_args.update(
             dict(
                 device_map={"": training_args.device},
-                load_in_4bit=training_args.bits == 4,
-                load_in_8bit=training_args.bits == 8,
+                # load_in_4bit=training_args.bits == 4,
+                # load_in_8bit=training_args.bits == 8,
                 quantization_config=BitsAndBytesConfig(
                     load_in_4bit=training_args.bits == 4,
-                    load_in_8bit=training_args.bits == 8,
-                    llm_int8_threshold=6.0,
-                    llm_int8_has_fp16_weight=False,
+                    # load_in_8bit=training_args.bits == 8,
+                    # llm_int8_threshold=6.0,
+                    # llm_int8_has_fp16_weight=False,
                     bnb_4bit_compute_dtype=compute_dtype,
+                    bnb_4bit_quant_storage=compute_dtype,
                     bnb_4bit_use_double_quant=training_args.double_quant,
                     bnb_4bit_quant_type=training_args.quant_type,  # {'fp4', 'nf4'}
                 ),
@@ -1650,17 +1651,25 @@ def train(attn_implementation=None):
             tunable_parts = model_args.mm_tunable_parts.split(",")
             if "mm_mlp_adapter" in tunable_parts:
                 for p in model.get_model().mm_projector.parameters():
+                    if (p.dtype == torch.uint8):
+                        p = p.to(torch.float16)
                     p.requires_grad = True
             if "mm_vision_resampler" in tunable_parts:
                 for p in model.get_model().vision_resampler.parameters():
+                    if (p.dtype == torch.uint8):
+                        p = p.to(torch.float16)
                     p.requires_grad = True
             if "mm_vision_tower" in tunable_parts:
                 for name, param in model.named_parameters():
                     if "vision_tower" in name:
+                        if (param.dtype == torch.uint8):
+                            param = param.to(torch.float16)
                         param.requires_grad_(True)
             if "mm_language_model" in tunable_parts:
                 for name, param in model.named_parameters():
                     if "vision_tower" not in name and "mm_projector" not in name and "vision_resampler" not in name:
+                        if (param.dtype == torch.uint8):
+                            param = param.to(torch.float16)
                         param.requires_grad_(True)
 
         total_params = sum(p.ds_numel if hasattr(p, "ds_numel") else p.numel() for p in model.parameters())
@@ -1692,8 +1701,10 @@ def train(attn_implementation=None):
                         module = module.to(torch.bfloat16)
 
     data_module = make_supervised_data_module(tokenizer=tokenizer, data_args=data_args)
-    trainer = LLaVATrainer(model=model, tokenizer=tokenizer, args=training_args, **data_module)
+    trainer = LLaVATrainer(model=model.to(torch.float16), tokenizer=tokenizer, args=training_args, **data_module)
     torch.cuda.empty_cache()
+    # print(trainer.model.dtype)
+    # print(next(iter(trainer.train_dataset)).input_ids.device)
 
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):
         trainer.train(resume_from_checkpoint=True)

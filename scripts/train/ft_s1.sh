@@ -1,4 +1,4 @@
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=4
 export NCCL_IB_DISABLE=0
 export NCCL_IB_GID_INDEX=3
 export NCCL_SOCKET_IFNAME=$(ifconfig | awk '/^[a-z]/ {gsub(/:/, ""); print $1; exit}')
@@ -8,7 +8,7 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-wz-1004_123605"
+PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-ov" 
 RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
 
 DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1_train.json
@@ -19,17 +19,18 @@ echo "PREV_STAGE_CHECKPOINT: ${PREV_STAGE_CHECKPOINT}"
 echo "RUN_NAME: ${RUN_NAME}"
 echo "DATA_PATH: ${DATA_PATH}"
 
-NUM_GPUS=$(nvidia-smi -L | wc -l)
+NUM_GPUS=2 # $(nvidia-smi -L | wc -l)
 NNODES=1
 RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
-
-
-# ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
-ACCELERATE_CPU_AFFINITY=1 accelerate launch \
+CUDA_VISIBLE_DEVICES=0,1
+# ACCELERATE_CPU_AFFINITY=1 accelerate launch \
+ACCELERATE_CPU_AFFINITY=1 
+# accelerate launch --config_file scripts/zero2.yaml \
+    # --deepspeed scripts/zero2.json \
+torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
     llava/train/train_mem.py \
-    --deepspeed scripts/zero3.json \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \
     --cache_dir /dpc/kunf0097/cache/models \
     --version $PROMPT_VERSION \
@@ -67,11 +68,15 @@ ACCELERATE_CPU_AFFINITY=1 accelerate launch \
     --dataloader_num_workers 1 \
     --lazy_preprocess True \
     --report_to wandb \
-    --torch_compile True \
-    --torch_compile_backend "inductor" \
     --dataloader_drop_last True \
     --verbose_logging True \
     --fp16 True \
     --lora_enable ${LORA_ENABLE} \
-    --frames_upbound 32
+    --frames_upbound 32 \
+    --lora_r 16 \
+    --lora_alpha 4 \
+    --bits 4
+    # --torch_compile True \
+    # --torch_compile_backend "inductor" \
+    
 exit 0;

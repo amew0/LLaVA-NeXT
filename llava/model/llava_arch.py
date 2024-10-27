@@ -109,6 +109,8 @@ class LlavaMetaModel:
         else:
             # In case it is frozen by LoRA
             for p in self.mm_projector.parameters():
+                if (p.dtype == torch.uint8):
+                    p = p.to(torch.float16)
                 p.requires_grad = True
 
         if pretrain_mm_mlp_adapter is not None:
