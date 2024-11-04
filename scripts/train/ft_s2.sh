@@ -1,4 +1,4 @@
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=4
 export NCCL_IB_DISABLE=0
 export NCCL_IB_GID_INDEX=3
 export NCCL_SOCKET_IFNAME=$(ifconfig | awk '/^[a-z]/ {gsub(/:/, ""); print $1; exit}')
@@ -8,10 +8,12 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s1-1015_215421"
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s2-$(date +%m%d_%H%M%S)"
+# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s1-1015_215421"
+PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s2-1028_182909"
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s3-$(date +%m%d_%H%M%S)"
+# RUN_NAME="v2-lora-llava-qwen-ov-s2-1028_182909"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2_train.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s3/s3_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
@@ -25,9 +27,9 @@ RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
 
-CUDA_VISIBLE_DEVICES=0,2,3
-# ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
-ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc.yaml --gpu_ids 0,2,3 \
+# CUDA_VISIBLE_DEVICES=0,2,3
+# ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc.yaml --gpu_ids 0,2,3 \
+ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
     llava/train/train_mem.py \
     --deepspeed scripts/zero3.json \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \

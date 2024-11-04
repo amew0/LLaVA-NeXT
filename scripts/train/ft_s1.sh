@@ -8,10 +8,10 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-7b-ov" 
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "lora-" || echo "" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
+PREV_STAGE_CHECKPOINT="lmms-lab/llava-onevision-qwen2-0.5b-ov" 
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1_train.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
@@ -19,17 +19,17 @@ echo "PREV_STAGE_CHECKPOINT: ${PREV_STAGE_CHECKPOINT}"
 echo "RUN_NAME: ${RUN_NAME}"
 echo "DATA_PATH: ${DATA_PATH}"
 
-NUM_GPUS=2 # $(nvidia-smi -L | wc -l)
+NUM_GPUS=$(nvidia-smi -L | wc -l)
 NNODES=1
 RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=29500
-CUDA_VISIBLE_DEVICES=0,1
+
 # ACCELERATE_CPU_AFFINITY=1 accelerate launch \
-ACCELERATE_CPU_AFFINITY=1 
+
 # accelerate launch --config_file scripts/zero2.yaml \
     # --deepspeed scripts/zero2.json \
-torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
+ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
     llava/train/train_mem.py \
     --model_name_or_path $PREV_STAGE_CHECKPOINT \
     --cache_dir /dpc/kunf0097/cache/models \
@@ -49,7 +49,7 @@ torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK
     --bf16 False \
     --run_name $RUN_NAME \
     --output_dir ${OUTPUT_DIR} \
-    --num_train_epochs 7 \
+    --num_train_epochs 10 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 4 \
     --gradient_accumulation_steps 2 \
@@ -73,10 +73,10 @@ torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK
     --fp16 True \
     --lora_enable ${LORA_ENABLE} \
     --frames_upbound 32 \
-    --lora_r 16 \
-    --lora_alpha 4 \
-    --bits 4
-    # --torch_compile True \
-    # --torch_compile_backend "inductor" \
+    --torch_compile True \
+    --torch_compile_backend "inductor" \
+    # --lora_r 16 \
+    # --lora_alpha 4 \
+    # --bits 4
     
 exit 0;

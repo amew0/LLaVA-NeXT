@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore")
 
 model_base =  None 
 model_name = "llava_qwen"
-device_map = {"":0}
+device_map = "auto" #{"":0}
 model_path = "/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s2-1016_100248"
 ray.shutdown()
 ray.init(address="auto",ignore_reinit_error=True)  # Connect to Ray or start locally
@@ -38,7 +38,10 @@ def load_video(video_path, max_frames_num):
     return spare_frames  # (frames, height, width, channels)
 
 # 2: Define the Sentiment Analysis Deployment
-@serve.deployment(ray_actor_options={"num_gpus": 0.22},num_replicas=9)
+NUM_REPLICAS = 2
+NUM_GPUS = 2
+# MAX_ONGOING_REQUESTS = 100
+@serve.deployment(ray_actor_options={"num_gpus": NUM_GPUS / NUM_REPLICAS},num_replicas=NUM_REPLICAS)
 class LlavaQ:
     def __init__(self):
         self.tokenizer, self.model, self.image_processor, self.max_length = load_pretrained_model_simplified(model_path, model_base, model_name, device_map=device_map, attn_implementation=None)
@@ -59,10 +62,8 @@ class LlavaQ:
             # Prepare conversation input
             conv_template = "qwen_1_5"
             instruction = ex["conversations"][0]["value"]
-            context = ex["conversations"][1]["value"]
             conv = copy.deepcopy(conv_templates[conv_template])
             conv.append_message(conv.roles[0], instruction)
-            conv.append_message(conv.roles[0], context)
             conv.append_message(conv.roles[1], None)
             prompt_question = conv.get_prompt()
             # print(prompt_question)

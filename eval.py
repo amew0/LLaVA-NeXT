@@ -43,89 +43,95 @@ def compare_expected_and_generated(expected_paragraph, generated_paragraph, toke
     return loss.item()
 
 for_s3 = False
+already_generated = True
 
 jtokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 jmodel = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct", device_map="auto")
 
-example_paths = ["data/s2_test.json"]
-model_path = "/dpc/kunf0097/.cache/huggingface/hub/llava-qwen-ov-s3-1020_154802"
+example_paths = [
+    "/home/kunet.ae/ku5001069/hff/out/s2_test_v2_model_s1.json"
+]
+model_path = "/dpc/kunf0097/.cache/huggingface/hub/7b-v2-hf-llava-qwen-ov-s1-1027_174437"
 for examples_path in example_paths:
     save_file = f"out/Qwen2-7B-Instruct/{examples_path.split('/')[-1].split('.')[0]}_{model_path.split('/')[-1]}.json"
-    # save_file = f"out/Qwen2-7B-Instruct/{examples_path.split('/')[-1].split('.')[0]}.json"
-    print(f"Examples to evaluate: {examples_path}")
+    print(f"\n\nExamples to evaluate: {examples_path}")
     print(f"Model path: {model_path}")
-    print(f"Save path: {save_file}")
+    print(f"Save path: {save_file}\n\n")
 
     with open(examples_path) as f:
         examples = json.load(f)
         print(f"Examples loaded: {len(examples)}")
 
-    model_base =  None
-    model_name = "llava_qwen"
-    # device_map = "auto"
-    device_map = {"":0}
-    tokenizer, model, image_processor, max_length = load_pretrained_model_simplified(model_path, model_base, model_name, device_map=device_map, attn_implementation=None)
+    if not already_generated:
+        model_base =  None
+        model_name = "llava_qwen"
+        # device_map = "auto"
+        device_map = {"":0}
+        tokenizer, model, image_processor, max_length = load_pretrained_model_simplified(model_path, model_base, model_name, device_map=device_map, attn_implementation=None)
 
     losses = []
     json_data = []
 
     for i, ex in tqdm(enumerate(examples), total=len(examples),ncols=100):
-        if not for_s3:
-            # Load and process video
-            video_path = ex["video"]
-            video_frames = load_video(video_path, 16)
+        if not already_generated:
+            if not for_s3:
+                # Load and process video
+                video_path = ex["video"]
+                video_frames = load_video(video_path, 16)
+                
+                # Prepare the frames for the model
+                frames = image_processor.preprocess(video_frames, return_tensors="pt")["pixel_values"]
+                if device_map != "auto" or True:
+                    frames = frames.half().cuda()
+                image_tensors = [frames]
             
-            # Prepare the frames for the model
-            frames = image_processor.preprocess(video_frames, return_tensors="pt")["pixel_values"]
-            if device_map != "auto" or True:
-                frames = frames.half().cuda()
-            image_tensors = [frames]
-        
-        # Prepare conversation input
-        conv_template = "qwen_1_5"
-        instruction = ex["conversations"][0]["value"]
-        conv = copy.deepcopy(conv_templates[conv_template])
-        conv.append_message(conv.roles[0], instruction)
-        if for_s3:
-            context = ex["conversations"][1]["value"]
-            conv.append_message(conv.roles[0], context)
-        conv.append_message(conv.roles[1], None)
-        prompt_question = conv.get_prompt()
-        
-        input_ids = tokenizer_image_token(prompt_question, tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).to(model.device)
-        
-        if not for_s3:
-            image_sizes = [frame.size for frame in video_frames]
-
-        # Generate response
-        if for_s3:
-            cont = model.generate(
-                input_ids,
-                do_sample=False,
-                temperature=0,
-                max_new_tokens=256,
-            )
-        else:
-            cont = model.generate(
-                input_ids,
-                images=image_tensors,
-                image_sizes=image_sizes,
-                do_sample=False,
-                temperature=0,
-                max_new_tokens=256,
-                modalities=["video"],
-            )
+            # Prepare conversation input
+            conv_template = "qwen_1_5"
+            instruction = ex["conversations"][0]["value"]
+            conv = copy.deepcopy(conv_templates[conv_template])
+            conv.append_message(conv.roles[0], instruction)
+            # if for_s3:
+            #     context = ex["conversations"][1]["value"]
+            #     conv.append_message(conv.roles[0], context)
+            conv.append_message(conv.roles[1], None)
+            prompt_question = conv.get_prompt()
             
-        text_outputs = tokenizer.batch_decode(cont, skip_special_tokens=True)
-        generated_text = text_outputs[0]  # Holds the model's prediction
+            input_ids = tokenizer_image_token(prompt_question, tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).to(model.device)
+            
+            if not for_s3:
+                image_sizes = [frame.size for frame in video_frames]
 
-        # Compare expected and generated outputs
-        if for_s3:
-            expected_text = ex["conversations"][2]["value"]
-        else:
+            # Generate response
+            if for_s3:
+                cont = model.generate(
+                    input_ids,
+                    do_sample=False,
+                    temperature=0,
+                    max_new_tokens=256,
+                )
+            else:
+                cont = model.generate(
+                    input_ids,
+                    images=image_tensors,
+                    image_sizes=image_sizes,
+                    do_sample=False,
+                    temperature=0,
+                    max_new_tokens=256,
+                    modalities=["video"],
+                )
+                
+            text_outputs = tokenizer.batch_decode(cont, skip_special_tokens=True)
+            generated_text = text_outputs[0]  # Holds the model's prediction
+
+            # Compare expected and generated outputs
+            # if for_s3:
+            #     expected_text = ex["conversations"][2]["value"]
+            # else:
             expected_text = ex["conversations"][1]["value"]
-        # expected_text = ex["expected"]
-        # generated_text = ex["generated"]
+        
+        else: 
+            expected_text = ex["expected"]
+            generated_text = ex["generated"]
         loss = compare_expected_and_generated(expected_text, generated_text, jtokenizer, jmodel)
         losses.append(loss)
         
@@ -134,6 +140,7 @@ for examples_path in example_paths:
             print(f"Generated: {generated_text}")
                 
         json_data.append({
+            # "id": ex["id"],
             "expected": expected_text,
             "generated": generated_text,
             "loss": loss
@@ -146,5 +153,5 @@ for examples_path in example_paths:
     average_loss = np.mean(losses)
     std_loss = np.std(losses)
 
-    print(f'Average Loss: {average_loss}, Standard Deviation: {std_loss}')
+    print(f'Average Loss, Standard Deviation: ({average_loss:.4f},  {std_loss:.4f})')
     print(f"Results saved to {save_file}")
