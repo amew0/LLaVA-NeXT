@@ -1290,7 +1290,11 @@ def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, dat
     """Make dataset and collator for supervised fine-tuning."""
     train_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, data_args=data_args)
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
-    return dict(train_dataset=train_dataset, eval_dataset=None, data_collator=data_collator)
+    if data_args.eval_data_path is None:
+        return dict(train_dataset=train_dataset, eval_dataset=None, data_collator=data_collator)
+    
+    eval_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.eval_data_path, data_args=data_args)
+    return dict(train_dataset=train_dataset, eval_dataset=eval_dataset, data_collator=data_collator)
 
 
 def get_model(model_args, training_args, bnb_model_from_pretrained_args):
@@ -1420,7 +1424,7 @@ def get_model(model_args, training_args, bnb_model_from_pretrained_args):
                     cache_dir=training_args.cache_dir,
                     # attn_implementation=training_args.attn_implementation,
                     torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
-                    low_cpu_mem_usage=True,
+                    low_cpu_mem_usage=False,
                     **customized_kwargs,
                 )
         elif "gemma" in model_args.model_name_or_path.lower():
@@ -1452,7 +1456,13 @@ def train(attn_implementation=None):
 
     parser = transformers.HfArgumentParser((ModelArguments, DataArguments, TrainingArguments))
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
+    
+    # training_args.report_to = []
+    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_test_v2_80.json"
+    rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
 
+    training_args.batch_eval_metrics = True
+    training_args.eval_steps = 0.01
     if training_args.verbose_logging:
         rank0_print(f"Inspecting experiment hyperparameters:\n")
         rank0_print(f"model_args = {vars(model_args)}\n\n")
@@ -1470,13 +1480,13 @@ def train(attn_implementation=None):
         bnb_model_from_pretrained_args.update(
             dict(
                 device_map={"": training_args.device},
-                # load_in_4bit=training_args.bits == 4,
-                # load_in_8bit=training_args.bits == 8,
+                load_in_4bit=training_args.bits == 4,
+                load_in_8bit=training_args.bits == 8,
                 quantization_config=BitsAndBytesConfig(
                     load_in_4bit=training_args.bits == 4,
-                    # load_in_8bit=training_args.bits == 8,
-                    # llm_int8_threshold=6.0,
-                    # llm_int8_has_fp16_weight=False,
+                    load_in_8bit=training_args.bits == 8,
+                    llm_int8_threshold=6.0,
+                    llm_int8_has_fp16_weight=False,
                     bnb_4bit_compute_dtype=compute_dtype,
                     bnb_4bit_quant_storage=compute_dtype,
                     bnb_4bit_use_double_quant=training_args.double_quant,
@@ -1651,25 +1661,17 @@ def train(attn_implementation=None):
             tunable_parts = model_args.mm_tunable_parts.split(",")
             if "mm_mlp_adapter" in tunable_parts:
                 for p in model.get_model().mm_projector.parameters():
-                    if (p.dtype == torch.uint8):
-                        p = p.to(torch.float16)
                     p.requires_grad = True
             if "mm_vision_resampler" in tunable_parts:
                 for p in model.get_model().vision_resampler.parameters():
-                    if (p.dtype == torch.uint8):
-                        p = p.to(torch.float16)
                     p.requires_grad = True
             if "mm_vision_tower" in tunable_parts:
                 for name, param in model.named_parameters():
                     if "vision_tower" in name:
-                        if (param.dtype == torch.uint8):
-                            param = param.to(torch.float16)
                         param.requires_grad_(True)
             if "mm_language_model" in tunable_parts:
                 for name, param in model.named_parameters():
                     if "vision_tower" not in name and "mm_projector" not in name and "vision_resampler" not in name:
-                        if (param.dtype == torch.uint8):
-                            param = param.to(torch.float16)
                         param.requires_grad_(True)
 
         total_params = sum(p.ds_numel if hasattr(p, "ds_numel") else p.numel() for p in model.parameters())
@@ -1699,9 +1701,78 @@ def train(attn_implementation=None):
                 if hasattr(module, "weight"):
                     if training_args.bf16 and module.weight.dtype == torch.float32:
                         module = module.to(torch.bfloat16)
-
     data_module = make_supervised_data_module(tokenizer=tokenizer, data_args=data_args)
-    trainer = LLaVATrainer(model=model.to(torch.float16), tokenizer=tokenizer, args=training_args, **data_module)
+    
+    import evaluate
+    bert = evaluate.load('bertscore')
+    gleu = evaluate.load('google_bleu')
+    
+    class MetricTracker:
+        def __init__(self):
+            self.bert_p = []
+            self.bert_r = []
+            self.bert_f1 = []
+            self.gleu = []
+
+        def update(self, predicted_deto, label_deto):
+            # Calculate scores for this batch
+            bert_score = bert.compute(predictions=predicted_deto, references=label_deto, model_type="microsoft/deberta-v3-small")
+            gleu_score = gleu.compute(predictions=predicted_deto, references=label_deto)
+
+            self.bert_p.extend(bert_score['precision'])
+            self.bert_r.extend(bert_score['recall'])
+            self.bert_f1.extend(bert_score['f1'])
+            self.gleu.append(gleu_score['google_bleu']) # gleu avg batch single score returned
+            
+            
+
+        def compute(self):
+            # Aggregate scores across batches
+            mean = lambda l: sum(l) / len(l) if l else 0.0
+            result = {
+                "bert_p": mean(self.bert_p),
+                "bert_r": mean(self.bert_r),
+                "bert_f1": mean(self.bert_f1),
+                "gleu": mean(self.gleu),
+            }
+            
+            # Reset batch statistics
+            self.bert_p = []
+            self.bert_r = []
+            self.bert_f1 = []
+            self.gleu = []
+            
+            return result
+    metric_tracker = MetricTracker()
+
+
+    # from bert_score import score as metric
+    def compute_metrics(eval_pred, compute_result=True):
+        # rank0_print(f"Computing metrics... {compute_result}")
+        predictions = eval_pred.predictions  # Shape: (2, 201, 15200)
+        labels = eval_pred.label_ids             # Shape: (2, 201)
+
+        CAP = 2000
+        if predictions.shape[1] > CAP:
+            predictions = predictions[:, :CAP, :]
+            labels = labels[:, :CAP]
+        
+        # rank0_print(predictions.shape)
+        
+        predicted_classes = torch.argmax(predictions, dim=-1)  # Shape: (2, 201)
+        
+        predicted_deto = tokenizer.batch_decode(predicted_classes, skip_special_tokens=True)
+        label_deto = tokenizer.batch_decode((label[label > -1] for label in labels), skip_special_tokens=True)
+        metric_tracker.update(predicted_deto, label_deto)
+
+        if compute_result:
+            return metric_tracker.compute()
+        
+    trainer = LLaVATrainer(model=model, 
+                           tokenizer=tokenizer, 
+                           args=training_args,
+                           compute_metrics=compute_metrics, 
+                           **data_module)
     torch.cuda.empty_cache()
     # print(trainer.model.dtype)
     # print(next(iter(trainer.train_dataset)).input_ids.device)

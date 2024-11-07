@@ -19,6 +19,7 @@ import shutil
 
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig, BitsAndBytesConfig
 import torch
+from llava.model import LlavaQwenForCausalLM
 from llava.model import *
 from llava.constants import DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from llava.utils import rank0_print
@@ -35,9 +36,11 @@ def load_pretrained_model_simplified(model_path, model_base, model_name, load_8b
     kwargs["device_map"] = device_map
 
     if load_8bit:
-        kwargs["load_in_8bit"] = True
+        # kwargs["load_in_8bit"] = True
+        kwargs["quantization_config"] = BitsAndBytesConfig(load_in_8bit=True, bnb_4bit_quant_type="nf4")
+
     elif load_4bit:
-        kwargs["load_in_4bit"] = True
+        # kwargs["load_in_4bit"] = True
         kwargs["quantization_config"] = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16, bnb_4bit_use_double_quant=True, bnb_4bit_quant_type="nf4")
     else:
         kwargs["torch_dtype"] = torch.float16
