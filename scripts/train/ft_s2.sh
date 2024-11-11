@@ -9,11 +9,11 @@ LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
 PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
-# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s2-1028_182909"
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s2-$(date +%m%d_%H%M%S)"
-# RUN_NAME="v2-lora-llava-qwen-ov-s1-1106_105645"
+# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1106_105645"
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-direct-$(date +%m%d_%H%M%S)"
+# RUN_NAME="v2-lora-llava-qwen-ov-s1-1106_221039"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_train_v2.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
@@ -25,10 +25,10 @@ NUM_GPUS=$(nvidia-smi -L | wc -l)
 NNODES=1
 RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
-PORT=29500
+PORT=29250
 
 # CUDA_VISIBLE_DEVICES=0,2,3
-# ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc.yaml --gpu_ids 0,2,3 \
+# ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc_cpu.yaml \
 # deepspeed --master_port="${PORT}" \
 ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NNODES}" --node_rank="${RANK}" --master_addr="${ADDR}" --master_port="${PORT}" \
     llava/train/train_mem.py \
@@ -74,9 +74,9 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NN
     --torch_compile_backend "inductor" \
     --dataloader_drop_last True \
     --verbose_logging True \
-    --fp16 True \
     --lora_enable ${LORA_ENABLE} \
     --lora_r 16 \
     --frames_upbound 32 \
+    --fp16 True \
     # --bits 8
 exit 0;

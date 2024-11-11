@@ -1291,7 +1291,7 @@ def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, dat
     train_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, data_args=data_args)
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
     if data_args.eval_data_path is None:
-        return dict(train_dataset=train_dataset, eval_dataset=None, data_collator=data_collator)
+        return dict(train_dataset=train_dataset, data_collator=data_collator)
     
     eval_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.eval_data_path, data_args=data_args)
     return dict(train_dataset=train_dataset, eval_dataset=eval_dataset, data_collator=data_collator)
@@ -1458,7 +1458,7 @@ def train(attn_implementation=None):
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     
     # training_args.report_to = []
-    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_test_v2_80.json"
+    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_test_v2_80.json"
     rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
 
     training_args.batch_eval_metrics = True
@@ -1745,37 +1745,65 @@ def train(attn_implementation=None):
             return result
     metric_tracker = MetricTracker()
 
+  
+    from transformers import TrainerCallback
+    from transformers.integrations import WandbCallback
+    class MetricCallback(WandbCallback):  
+        def on_evaluate(self, args, state, control, model=None, tokenizer=None, eval_dataloader=None, **kwargs):
+            self._wandb.init(reinit=False)
+            model.eval()
+            all_preds, all_labels = [], []
+            for batch in eval_dataloader:
+                assistant_id = 77091
+                input_ids = batch.pop("input_ids")
+                attention_mask = batch.pop("attention_mask")
+                labels = batch.pop("labels")
+                # Get indices of assistant token for each example in the batch
+                assistant_idx = (input_ids == assistant_id).float().argmax(dim=1)
+                
 
-    # from bert_score import score as metric
-    def compute_metrics(eval_pred, compute_result=True):
-        # rank0_print(f"Computing metrics... {compute_result}")
-        predictions = eval_pred.predictions  # Shape: (2, 201, 15200)
-        labels = eval_pred.label_ids             # Shape: (2, 201)
+                for i in range(input_ids.shape[0]):
+                    prompt_input_ids = input_ids[i, :assistant_idx[i].item() + 1]
+                    prompt_input_ids = prompt_input_ids[prompt_input_ids >= 0] # Spent a full day to find this :(
+                    prompt_attention_mask = attention_mask[i, :len(prompt_input_ids)]
+                    
+                    label_ids = labels[i, assistant_idx[i].item() + 1:].unsqueeze(0)
+                    
+                    # Generate continuation
+                    cont = model.generate(
+                        input_ids=prompt_input_ids.unsqueeze(0),
+                        attention_mask=prompt_attention_mask.unsqueeze(0),
+                        do_sample=False,
+                        temperature=0,
+                        max_new_tokens=256,
+                        image_sizes=[batch["image_sizes"][i]],
+                        modalities=[batch["modalities"][i]],
+                        images=[batch["images"][i].to(model.dtype)],
+                        # **batch,
+                    )
 
-        CAP = 2000
-        if predictions.shape[1] > CAP:
-            predictions = predictions[:, :CAP, :]
-            labels = labels[:, :CAP]
-        
-        # rank0_print(predictions.shape)
-        
-        predicted_classes = torch.argmax(predictions, dim=-1)  # Shape: (2, 201)
-        
-        predicted_deto = tokenizer.batch_decode(predicted_classes, skip_special_tokens=True)
-        label_deto = tokenizer.batch_decode((label[label > -1] for label in labels), skip_special_tokens=True)
-        metric_tracker.update(predicted_deto, label_deto)
-
-        if compute_result:
-            return metric_tracker.compute()
+                    text_output = tokenizer.batch_decode(cont, skip_special_tokens=False)
+                    all_preds.append(text_output[0]) 
+                    
+                    label = tokenizer.batch_decode(label_ids, skip_special_tokens=False)
+                    all_labels.append(label[0])
+                
+            rank0_print(f"Predictions: {all_preds}")
+            rank0_print(f"Labels: {all_labels}")
+            metric_tracker.update(all_preds, all_labels)
+            results = metric_tracker.compute()
+                
+            log = {"step": state.global_step, **results}
+            # print(log)
+            state.log_history.append(log)
+            self._wandb.log(log)
         
     trainer = LLaVATrainer(model=model, 
                            tokenizer=tokenizer, 
                            args=training_args,
-                           compute_metrics=compute_metrics, 
+                           callbacks=[MetricCallback()],
                            **data_module)
     torch.cuda.empty_cache()
-    # print(trainer.model.dtype)
-    # print(next(iter(trainer.train_dataset)).input_ids.device)
 
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):
         trainer.train(resume_from_checkpoint=True)
