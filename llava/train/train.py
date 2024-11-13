@@ -1726,14 +1726,14 @@ def train(attn_implementation=None):
             
             
 
-        def compute(self):
+        def compute(self, log_for='eval'):
             # Aggregate scores across batches
             mean = lambda l: sum(l) / len(l) if l else 0.0
             result = {
-                "bert_p": mean(self.bert_p),
-                "bert_r": mean(self.bert_r),
-                "bert_f1": mean(self.bert_f1),
-                "gleu": mean(self.gleu),
+                f"{log_for}/bert_p": mean(self.bert_p),
+                f"{log_for}/bert_r": mean(self.bert_r),
+                f"{log_for}/bert_f1": mean(self.bert_f1),
+                f"{log_for}/gleu": mean(self.gleu),
             }
             
             # Reset batch statistics
@@ -1746,57 +1746,73 @@ def train(attn_implementation=None):
     metric_tracker = MetricTracker()
 
   
-    from transformers import TrainerCallback
     from transformers.integrations import WandbCallback
+    from tqdm import tqdm
+    
+    def evaluate(dataloader, desc="eval"):
+        all_preds, all_labels = [], []
+        for i, batch in tqdm(enumerate(dataloader), desc=desc):
+            if desc == "train" and i*training_args.per_device_train_batch_size > 80:
+                break
+            
+            assistant_id = 77091
+            input_ids = batch.pop("input_ids")
+            attention_mask = batch.pop("attention_mask")
+            labels = batch.pop("labels")
+            assistant_idx = (input_ids == assistant_id).float().argmax(dim=1)  # indices of assistant token for each example
+
+            for i in range(input_ids.shape[0]):
+                prompt_input_ids = input_ids[i, :assistant_idx[i].item() + 1]
+                prompt_input_ids = prompt_input_ids[prompt_input_ids >= 0] # Spent a full day to find this :(
+                prompt_attention_mask = attention_mask[i, :len(prompt_input_ids)]
+                
+                label_ids = labels[i, assistant_idx[i].item() + 1:].unsqueeze(0)
+                
+                # Generate continuation
+                cont = model.generate(
+                    input_ids=prompt_input_ids.unsqueeze(0),
+                    attention_mask=prompt_attention_mask.unsqueeze(0),
+                    do_sample=False,
+                    temperature=0,
+                    max_new_tokens=256,
+                    image_sizes=[batch["image_sizes"][i]],
+                    modalities=[batch["modalities"][i]],
+                    images=[batch["images"][i].to(model.dtype)],
+                    # **batch,
+                )
+
+                text_output = tokenizer.batch_decode(cont, skip_special_tokens=False)
+                all_preds.append(text_output[0]) 
+                
+                label = tokenizer.batch_decode(label_ids, skip_special_tokens=False)
+                all_labels.append(label[0])
+            
+        rank0_print(f"Predictions: {all_preds}")
+        rank0_print(f"Labels: {all_labels}")
+        metric_tracker.update(all_preds, all_labels)
+        results = metric_tracker.compute(log_for=desc)
+        return results
+    
+    from transformers import TrainerCallback
+
     class MetricCallback(WandbCallback):  
-        def on_evaluate(self, args, state, control, model=None, tokenizer=None, eval_dataloader=None, **kwargs):
+        def on_evaluate(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
             self._wandb.init(reinit=False)
             model.eval()
-            all_preds, all_labels = [], []
-            for batch in eval_dataloader:
-                assistant_id = 77091
-                input_ids = batch.pop("input_ids")
-                attention_mask = batch.pop("attention_mask")
-                labels = batch.pop("labels")
-                # Get indices of assistant token for each example in the batch
-                assistant_idx = (input_ids == assistant_id).float().argmax(dim=1)
-                
-
-                for i in range(input_ids.shape[0]):
-                    prompt_input_ids = input_ids[i, :assistant_idx[i].item() + 1]
-                    prompt_input_ids = prompt_input_ids[prompt_input_ids >= 0] # Spent a full day to find this :(
-                    prompt_attention_mask = attention_mask[i, :len(prompt_input_ids)]
-                    
-                    label_ids = labels[i, assistant_idx[i].item() + 1:].unsqueeze(0)
-                    
-                    # Generate continuation
-                    cont = model.generate(
-                        input_ids=prompt_input_ids.unsqueeze(0),
-                        attention_mask=prompt_attention_mask.unsqueeze(0),
-                        do_sample=False,
-                        temperature=0,
-                        max_new_tokens=256,
-                        image_sizes=[batch["image_sizes"][i]],
-                        modalities=[batch["modalities"][i]],
-                        images=[batch["images"][i].to(model.dtype)],
-                        # **batch,
-                    )
-
-                    text_output = tokenizer.batch_decode(cont, skip_special_tokens=False)
-                    all_preds.append(text_output[0]) 
-                    
-                    label = tokenizer.batch_decode(label_ids, skip_special_tokens=False)
-                    all_labels.append(label[0])
-                
-            rank0_print(f"Predictions: {all_preds}")
-            rank0_print(f"Labels: {all_labels}")
-            metric_tracker.update(all_preds, all_labels)
-            results = metric_tracker.compute()
-                
-            log = {"step": state.global_step, **results}
-            # print(log)
+            
+            # Evaluate train_dataset
+            results = evaluate(train_dataloader, desc="train")
+            log = {"step": state.global_step, "epoch": state.epoch, **results}
             state.log_history.append(log)
             self._wandb.log(log)
+            print(log)
+            
+            # Evaluate eval_dataset
+            results = evaluate(eval_dataloader, desc='eval')
+            log = {"step": state.global_step, "epoch": state.epoch ,**results}
+            state.log_history.append(log)
+            self._wandb.log(log)
+            print(log)
         
     trainer = LLaVATrainer(model=model, 
                            tokenizer=tokenizer, 
