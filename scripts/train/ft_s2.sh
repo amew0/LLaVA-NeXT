@@ -8,10 +8,10 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
-# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1106_105645"
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-direct-$(date +%m%d_%H%M%S)"
-# RUN_NAME="v2-lora-llava-qwen-ov-s1-1106_221039"
+# PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
+PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1112_020005"
+# RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
+RUN_NAME="v2-lora-llava-qwen-ov-s1-1114_090122"
 
 DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
@@ -25,7 +25,8 @@ NUM_GPUS=$(nvidia-smi -L | wc -l)
 NNODES=1
 RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
-PORT=29250
+PORT=$(( ( RANDOM % 55000 )  + 10000 )) # Random port between 10000 and 65000
+
 
 # CUDA_VISIBLE_DEVICES=0,2,3
 # ACCELERATE_CPU_AFFINITY=1 accelerate launch --config_file /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/acc_cpu.yaml \
