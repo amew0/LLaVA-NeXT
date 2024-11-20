@@ -1458,7 +1458,7 @@ def train(attn_implementation=None):
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     
     # training_args.report_to = []
-    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_test_v2_80.json"
+    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_test_v2_6.json"
     rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
 
     training_args.batch_eval_metrics = True
@@ -1749,10 +1749,10 @@ def train(attn_implementation=None):
     from transformers.integrations import WandbCallback
     from tqdm import tqdm
     
-    def evaluate(dataloader, desc="eval"):
+    def evaluate(dataloader, log_for="eval", verbose=False):
         all_preds, all_labels = [], []
-        for i, batch in tqdm(enumerate(dataloader), desc=desc):
-            if desc == "train" and i*training_args.per_device_train_batch_size > 80:
+        for i, batch in tqdm(enumerate(dataloader), desc=log_for, total=len(dataloader) if log_for=='eval' else 80, ncols=80):
+            if log_for == "train" and i*training_args.per_device_train_batch_size*2 > 80:
                 break
             
             assistant_id = 77091
@@ -1767,6 +1767,7 @@ def train(attn_implementation=None):
                 prompt_attention_mask = attention_mask[i, :len(prompt_input_ids)]
                 
                 label_ids = labels[i, assistant_idx[i].item() + 1:].unsqueeze(0)
+                label_ids = label_ids[label_ids >= 0].unsqueeze(0)
                 
                 # Generate continuation
                 cont = model.generate(
@@ -1786,39 +1787,69 @@ def train(attn_implementation=None):
                 
                 label = tokenizer.batch_decode(label_ids, skip_special_tokens=False)
                 all_labels.append(label[0])
-            
-        rank0_print(f"Predictions: {all_preds}")
-        rank0_print(f"Labels: {all_labels}")
+        
+        if verbose:
+            rank0_print(f"Predictions: {all_preds}")
+            rank0_print(f"Labels: {all_labels}")
         metric_tracker.update(all_preds, all_labels)
-        results = metric_tracker.compute(log_for=desc)
+        results = metric_tracker.compute(log_for=log_for)
         return results
     
     from transformers import TrainerCallback
 
     class MetricCallback(WandbCallback):  
+        def __init__(self):
+            super().__init__()
+            self.loss_adjustment = 0.0
+            self.vverbose = True
+            
         def on_evaluate(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
             self._wandb.init(reinit=False)
             model.eval()
+                        
+            train_results = evaluate(train_dataloader, log_for="train", verbose=self.vverbose)
+            eval_results = evaluate(eval_dataloader, log_for="eval", verbose=self.vverbose)
             
-            # Evaluate train_dataset
-            results = evaluate(train_dataloader, desc="train")
-            log = {"step": state.global_step, "epoch": state.epoch, **results}
-            state.log_history.append(log)
-            self._wandb.log(log)
-            print(log)
+            train_log = {"log_for":"train", "step": state.global_step, "train/epoch": state.epoch, **train_results}
+            eval_log = {"log_for":"eval", "step": state.global_step, "train/epoch": state.epoch ,**eval_results}
             
-            # Evaluate eval_dataset
-            results = evaluate(eval_dataloader, desc='eval')
-            log = {"step": state.global_step, "epoch": state.epoch ,**results}
-            state.log_history.append(log)
-            self._wandb.log(log)
-            print(log)
-        
-    trainer = LLaVATrainer(model=model, 
+            state.log_history.append(train_log)
+            state.log_history.append(eval_log)
+            
+            self._wandb.log(train_log)
+            self._wandb.log(eval_log)
+                        
+            # For custom loss
+            self.loss_adjustment = 1 - (train_results.get('train/bert_f1', 0.0) + train_results.get('train/gleu', 0.0)) / 2
+                        
+            if self.vverbose:
+                rank0_print(train_log)
+                rank0_print(eval_log)
+                self.vverbose = False
+    
+    import torch.distributed as dist
+
+    class AdjustedLLaVATrainer(LLaVATrainer):
+        """LLava Trainer with custom loss adjustment."""
+        def compute_loss(self, model, inputs, return_outputs=False):
+            loss, outputs = super().compute_loss(model, inputs, return_outputs=True)
+
+            # Adjust loss during evaluation
+            if hasattr(self, 'metric_callback') and self.metric_callback.loss_adjustment:
+                # print(f"Orig: {loss}")
+                loss = 0.9*loss + 0.1*self.metric_callback.loss_adjustment
+                # print(f"Adjusted: {loss}")
+                self.metric_callback.loss_adjustment = 0.0
+
+            return (loss, outputs) if return_outputs else loss
+    
+    metric_callback = MetricCallback()
+    trainer = AdjustedLLaVATrainer(model=model, 
                            tokenizer=tokenizer, 
                            args=training_args,
-                           callbacks=[MetricCallback()],
+                           callbacks=[metric_callback],
                            **data_module)
+    trainer.metric_callback = metric_callback
     torch.cuda.empty_cache()
 
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):
@@ -1847,3 +1878,6 @@ def train(attn_implementation=None):
 
 if __name__ == "__main__":
     train()
+    import time
+    while True:
+        time.sleep(1) # keep the session alive

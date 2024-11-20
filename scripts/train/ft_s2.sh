@@ -8,12 +8,12 @@ PROMPT_VERSION="qwen_1_5"
 LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
-# PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
-PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1112_020005"
+PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
+# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1112_020005"
 # RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
-RUN_NAME="v2-lora-llava-qwen-ov-s1-1114_090122"
+RUN_NAME="v2-lora-llava-qwen-ov-s1-1119_232036"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_train_v2.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
@@ -26,6 +26,7 @@ NNODES=1
 RANK=0
 ADDR=$(hostname -I | awk '{print $1}')
 PORT=$(( ( RANDOM % 55000 )  + 10000 )) # Random port between 10000 and 65000
+echo "PORT: ${PORT}"
 
 
 # CUDA_VISIBLE_DEVICES=0,2,3
@@ -52,18 +53,18 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NN
     --bf16 False \
     --run_name $RUN_NAME \
     --output_dir ${OUTPUT_DIR} \
-    --num_train_epochs 8 \
-    --per_device_train_batch_size 1 \
+    --num_train_epochs 4 \
+    --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 2 \
+    --gradient_accumulation_steps 1 \
     --evaluation_strategy "steps" \
     --save_strategy "steps" \
     --save_steps 0.1 \
     --save_total_limit 1 \
-    --learning_rate 1e-5 \
-    --weight_decay 0. \
-    --warmup_ratio 0.03 \
-    --lr_scheduler_type "cosine" \
+    --learning_rate 1e-6 \
+    --weight_decay 0.01 \
+    --warmup_ratio 0.08 \
+    --lr_scheduler_type "linear" \
     --logging_steps 1 \
     --tf32 False \
     --model_max_length 32768 \

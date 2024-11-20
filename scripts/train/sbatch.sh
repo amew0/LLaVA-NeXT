@@ -1,17 +1,18 @@
 #!/bin/bash
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=20
-#SBATCH --job-name=ft-s2.sh
-#SBATCH --time=12:00:00
-#SBATCH --partition=gpu
-#SBATCH --account=kunf0097
-#SBATCH --output=./outerr/%j.out
-#SBATCH --error=./outerr/%j.err
+#SBATCH -N 1
+#SBATCH -c 52
+#SBATCH -J ft-s2.sh
+#SBATCH -t 24:00:00
+#SBATCH -p gpu
+#SBATCH -A kunf0097
+#SBATCH -o ./outerr/%j.out
+#SBATCH -e ./outerr/%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=aminekidane4@gmail.com
 # SBATCH --begin=02:00:00
 # SBATCH --exclusive
-# SBATCH --nodelist=gpu-10-2
+#SBATCH --nodelist=gpu-10-3
+# SBATCH --mem-per-cpu=32000
 module load miniconda/3
 conda activate llavanext
 echo "Finally - out of queue" 
