@@ -1,0 +1,1626 @@
+[
+    {
+        "id": "c96de36c-5daa-407c-8ac3-f25748c52737",
+        "video": "/dpc/kunf0097/data/hwid12/c96de36c-5daa-407c-8ac3-f25748c52737.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision with a stationary object suggests minor structural damage without indication of severe injury or major traffic disruption.). The probable cause of the scene could be driver inattention or misjudgment of distance, leading to the vehicle colliding with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "9c2672e9-10ef-47fb-b656-7481710524de",
+        "video": "/dpc/kunf0097/data/hwid12/9c2672e9-10ef-47fb-b656-7481710524de.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision involves a stationary object, so the damage might be limited to the vehicle and the object, with minimal impact unless it severely blocks the road.). The most probable cause of the collision could be driver inattention or loss of control leading to impact with the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "5459e79b-d6f0-4b79-bacf-7b6e9f295cad",
+        "video": "/dpc/kunf0097/data/hwid12/5459e79b-d6f0-4b79-bacf-7b6e9f295cad.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion present, as the situation involves intentional vehicle maneuvers.). The most probable cause of skidding or drifting is intentional maneuvering or loss of traction, possibly due to driver behavior in a controlled environment or on a slick surface."
+            }
+        ]
+    },
+    {
+        "id": "e3341ddf-1dd9-4cdc-a95e-fc9eeb223171",
+        "video": "/dpc/kunf0097/data/hwid12/e3341ddf-1dd9-4cdc-a95e-fc9eeb223171.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The severity is high due to the rollover, potentially causing significant injury or secondary accidents from obstacles blocking the road.). The most probable cause of the rollover could be high speed taking a sharp turn, or distraction leading to loss of control."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080608x01857",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080608x01857.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: rain, time: 08:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (Light congestion likely due to rain and morning traffic; rain could have deterred some from driving, thus the congestion is minimal). The most probable cause for the scene is the wet weather conditions, which may have influenced driving patterns resulting in light congestion but no accidents."
+            }
+        ]
+    },
+    {
+        "id": "c715bce8-f2ca-4c8e-b7b7-b837e505ba37",
+        "video": "/dpc/kunf0097/data/hwid12/c715bce8-f2ca-4c8e-b7b7-b837e505ba37.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion present, one vehicle involved in drift/skid without obstructing traffic). The most probable cause of the scene is the driver attempting to perform a drift or losing control of the vehicle, possibly due to sharp turning or oversteering."
+            }
+        ]
+    },
+    {
+        "id": "e26d8eaf-5b4d-45f5-b8cd-3ae3683378ba",
+        "video": "/dpc/kunf0097/data/hwid12/e26d8eaf-5b4d-45f5-b8cd-3ae3683378ba.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Moderate, mainly due to the involvement of a vulnerable vehicle like a motorcycle, which increases the risk of injury and potential for additional vehicle damage.). Number of vehicles involved: At least two (motorcycle and another vehicle or motorcycle). The collision probably occurred due to a failure to yield the right of way or an abrupt maneuver by one of the vehicles."
+            }
+        ]
+    },
+    {
+        "id": "30d52e4c-fd68-4e2b-b8ea-2de222d25e52",
+        "video": "/dpc/kunf0097/data/hwid12/30d52e4c-fd68-4e2b-b8ea-2de222d25e52.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Due to typical low-speed impact of rear-end collisions and absence of additional critical factors). The most probable cause of the rear-end collision is likely driver inattention or sudden braking, common factors in such types of accidents."
+            }
+        ]
+    },
+    {
+        "id": "502a800f-4c0c-4511-a8a8-a469aeace096",
+        "video": "/dpc/kunf0097/data/hwid12/502a800f-4c0c-4511-a8a8-a469aeace096.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Motorcycle collisions often result in serious injuries or fatalities due to the lack of protection for riders, making these accidents relatively severe).. The most probable cause of the accident could be the result of misjudgment during overtaking or lane-changing by either the motorcycle or the second vehicle, a common issue in collisions involving motorcycles."
+            }
+        ]
+    },
+    {
+        "id": "d0d43380-080c-47ca-92f5-8c608bb7ce50",
+        "video": "/dpc/kunf0097/data/hwid12/d0d43380-080c-47ca-92f5-8c608bb7ce50.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (no congestion present due to the drifting/skidding activity). The most probable cause of the drifting or skidding scene could be reckless or intentional maneuvering by the driver, likely for entertainment or demonstration purposes."
+            }
+        ]
+    },
+    {
+        "id": "3dafc457-520f-4cb2-a900-94730b76404a",
+        "video": "/dpc/kunf0097/data/hwid12/3dafc457-520f-4cb2-a900-94730b76404a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: [Rate the severity on a scale from 0-5 and specify the most prominent reason for the score]. Additional fields (1.1.h, etc.), if applicable for factors like emergency responders, visible injuries, infrastructure damage, fire, smoke, vehicle rollover, etc.. [Insert the final probable cause for the crash as deduced from the context or observations - one cause only]"
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080616x00062",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080616x00062.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: clear, time: 16:00, congestion: heavy"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 4 (Most likely due to high vehicle density and possible traffic management inefficiency). The heavy congestion is most probably caused by high vehicle density during the afternoon peak travel time."
+            }
+        ]
+    },
+    {
+        "id": "c124413d-6725-486d-891d-fe03628b00f9",
+        "video": "/dpc/kunf0097/data/hwid12/c124413d-6725-486d-891d-fe03628b00f9.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (Slight delay due to drifting or skidding nearby but not causing severe blockage). The most probable cause of the drifting or skidding is likely due to the driver's deliberate action or potential lack of control over the vehicle, possibly from speeding or a vehicle malfunction."
+            }
+        ]
+    },
+    {
+        "id": "4370f4cf-4620-4bde-8960-ede290ba6e78",
+        "video": "/dpc/kunf0097/data/hwid12/4370f4cf-4620-4bde-8960-ede290ba6e78.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Low impact with a stationary object suggests minimal damage and no pedestrian involvement). The most probable cause of the scene is driver inattention or distraction leading to a collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "1a6c07c1-0387-4f16-b3aa-247097ec29fd",
+        "video": "/dpc/kunf0097/data/hwid12/1a6c07c1-0387-4f16-b3aa-247097ec29fd.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Low impact severity presumed since it is a stationary object; the primary factor is low-speed impact typical for such scenarios).. The probable cause of the collision is driver inattention or misjudgment leading to hitting a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "a1dedc3c-6dff-4d1b-a4e8-afb38208a20d",
+        "video": "/dpc/kunf0097/data/hwid12/a1dedc3c-6dff-4d1b-a4e8-afb38208a20d.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Given the side collision likely involves vehicle damage and potential traffic congestion). The most probable cause of this side collision is likely a failure to yield the right of way at an intersection."
+            }
+        ]
+    },
+    {
+        "id": "7f6e1195-2aeb-40ff-b608-bfec8970621d",
+        "video": "/dpc/kunf0097/data/hwid12/7f6e1195-2aeb-40ff-b608-bfec8970621d.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Scene: Fire and/or smoke, and/or explosion"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 5 (The presence of both fire and smoke suggests a severe and potentially hazardous situation, requiring immediate attention from emergency responders.). It is most likely that a vehicle or infrastructure-related fire or explosion is causing this hazardous scene."
+            }
+        ]
+    },
+    {
+        "id": "7c4958df-8bb6-4820-b957-11f357c33e05",
+        "video": "/dpc/kunf0097/data/hwid12/7c4958df-8bb6-4820-b957-11f357c33e05.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The rear-end collision suggests moderate damage that could block traffic and requires attention.). probable cause of the scene could be sudden braking or distraction of the following driver leading to a failure to stop in time, resulting in a rear-end collision."
+            }
+        ]
+    },
+    {
+        "id": "707f74a2-aa2c-484b-bd15-ad6463e68d45",
+        "video": "/dpc/kunf0097/data/hwid12/707f74a2-aa2c-484b-bd15-ad6463e68d45.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Without additional context, it's challenging to assess accurately, but involvement of motorcycles can increase the risk. Let's tentatively rate it as 3 due to potential for injury.. The probable cause of the collision is the involvement of motorcycles, which are more vulnerable and can be hard to see by other drivers."
+            }
+        ]
+    },
+    {
+        "id": "60615a71-c69e-45d3-9ccb-83b5b37e804a",
+        "video": "/dpc/kunf0097/data/hwid12/60615a71-c69e-45d3-9ccb-83b5b37e804a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (likely light or caused temporarily by the skidding vehicle). The most probable cause of the skidding is likely a slippery road surface, which could be due to wetness from rain or oil spills."
+            }
+        ]
+    },
+    {
+        "id": "4075bbc5-0dee-4462-9caa-dfec7fb7db6e",
+        "video": "/dpc/kunf0097/data/hwid12/4075bbc5-0dee-4462-9caa-dfec7fb7db6e.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The severity rating takes into account the vulnerability of a motorcycle in collisions, but without further information, the exact severity remains moderate). The accident is most likely due to a failure to observe traffic rules or signaling, resulting in a collision."
+            }
+        ]
+    },
+    {
+        "id": "78b431e1-e301-43d3-a34d-8c6ac21264b9",
+        "video": "/dpc/kunf0097/data/hwid12/78b431e1-e301-43d3-a34d-8c6ac21264b9.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Given available information and typical side collision dynamics, 3 (assuming moderate damage and congestion potential).. The collision is most likely caused by a failure to observe traffic signals or right-of-way rules, often due to driver distraction or misjudgment at intersections or lanes."
+            }
+        ]
+    },
+    {
+        "id": "d7c32d8a-62c4-48b1-900c-1ec2f0f9e712",
+        "video": "/dpc/kunf0097/data/hwid12/d7c32d8a-62c4-48b1-900c-1ec2f0f9e712.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion as the scene involves skidding or drifting which requires free road space).. Loss of control of the vehicle possibly due to excessive speed or sudden maneuvering on a clear road enabled the skidding or drifting."
+            }
+        ]
+    },
+    {
+        "id": "2c214075-d86f-44d8-8d57-2cfe1f64ff7b",
+        "video": "/dpc/kunf0097/data/hwid12/2c214075-d86f-44d8-8d57-2cfe1f64ff7b.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (since the scene is likely isolated for the event). The most probable cause behind the scene is likely intentional drifting or skidding for entertainment or skill demonstration purposes in a controlled environment."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080608x01851",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080608x01851.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: rain, time: 08:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (Light congestion, likely due to external factors like the rain rather than high vehicle density). Light rain during morning hours possibly caused cautious driving, resulting in light congestion."
+            }
+        ]
+    },
+    {
+        "id": "17b9ea81-5bb5-4dcc-ad33-77c1025f41dd",
+        "video": "/dpc/kunf0097/data/hwid12/17b9ea81-5bb5-4dcc-ad33-77c1025f41dd.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (The scene is not causing congestion, as it is intentional maneuvering such as drifting/skidding.). The most probable cause of the scene is intentional vehicle maneuvering or a demonstration of driving skills leading to skidding."
+            }
+        ]
+    },
+    {
+        "id": "c7dc2364-f086-4065-9306-9353ef6bf4e6",
+        "video": "/dpc/kunf0097/data/hwid12/c7dc2364-f086-4065-9306-9353ef6bf4e6.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Moderate severity due to the involvement of a motorcycle, which often leads to increased risk of injury even in minor collisions).. Additional considerations: There may be visible damage to the motorcycle or vehicle, possible injuries due to exposure of the motorcyclist.. The probable cause of the collision is likely misjudgment or failure to notice the motorcyclist when changing lanes or making turns."
+            }
+        ]
+    },
+    {
+        "id": "854f6060-87e8-4ca9-aecd-5ac5e54d0995",
+        "video": "/dpc/kunf0097/data/hwid12/854f6060-87e8-4ca9-aecd-5ac5e54d0995.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The head-on collision generally indicates a severe impact, leading to significant vehicle damage and potential injuries). The most probable cause of this incident is likely driver error, such as distraction or improper lane changes, leading to the vehicles colliding head-on."
+            }
+        ]
+    },
+    {
+        "id": "d192ec69-4fd7-403b-a8c4-47cf32a20bc5",
+        "video": "/dpc/kunf0097/data/hwid12/d192ec69-4fd7-403b-a8c4-47cf32a20bc5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Rear-end collisions can vary in severity but often cause moderate disruptions and potential injuries; the score is based on potential traffic implications and vehicle damage).. The most probable cause of the scene is either driver inattention or sudden braking by the vehicle in front."
+            }
+        ]
+    },
+    {
+        "id": "98fa2b44-76d1-4d59-82b6-9b4725140afa",
+        "video": "/dpc/kunf0097/data/hwid12/98fa2b44-76d1-4d59-82b6-9b4725140afa.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The severity is moderate based on vehicle damage and potential traffic disruption but without pedestrian involvement or hazardous conditions). The most probable cause of the scene is likely inattentiveness or sudden braking by the lead vehicle, which is a frequent reason for rear-end collisions."
+            }
+        ]
+    },
+    {
+        "id": "662281e0-ddfb-4991-9f87-ff0c4f1bd4d4",
+        "video": "/dpc/kunf0097/data/hwid12/662281e0-ddfb-4991-9f87-ff0c4f1bd4d4.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion as drifting/skidding does not impact other traffic). the scene involved drifting or skidding, it is most likely due to reckless driving or loss of tire traction, potentially due to conditions such as a wet road."
+            }
+        ]
+    },
+    {
+        "id": "f9be8295-6d89-444a-bf17-5ba0953ebd61",
+        "video": "/dpc/kunf0097/data/hwid12/f9be8295-6d89-444a-bf17-5ba0953ebd61.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (as there is no traffic or congestion effect noted). vehicle is observed skidding or drifting, likely a result of the driver intentionally performing this maneuver in a controlled or designated environment. This could be for a recreational, competitive, or demonstrative purpose in an area where such activities are allowed."
+            }
+        ]
+    },
+    {
+        "id": "2b980893-1c03-4ceb-a378-174dc43532fe",
+        "video": "/dpc/kunf0097/data/hwid12/2b980893-1c03-4ceb-a378-174dc43532fe.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Provide a score from 0-5 based on observed factors and the most relevant cause for the severity.. Additional field evaluations can be made here based on emergency responders, vehicle conditions, etc. as 1.1.h onwards.. Provide the most logical cause of the collision from available information and observations."
+            }
+        ]
+    },
+    {
+        "id": "439b4f2b-f639-481f-ac5b-cf972374f5b4",
+        "video": "/dpc/kunf0097/data/hwid12/439b4f2b-f639-481f-ac5b-cf972374f5b4.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (High severity due to the potential for severe injuries and significant road blockage). The vehicle rollover likely occurred due to sudden swerving or loss of control, possibly exacerbated by high speeds or abrupt maneuvers."
+            }
+        ]
+    },
+    {
+        "id": "c2409697-d8b0-426a-ad99-c0e59cc61321",
+        "video": "/dpc/kunf0097/data/hwid12/c2409697-d8b0-426a-ad99-c0e59cc61321.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: After assessing collision details, rate it on a scale of 0-5 and provide the most prominent reason for this score.. with a sentence or two, most likely causes for the collision should be considered based on the aspects like road conditions, driving behavior, or environmental factors.. a specific scene, more detailed and specific data would be used to fill these categories."
+            }
+        ]
+    },
+    {
+        "id": "5ca766af-54d8-401b-b871-14ae8592c60e",
+        "video": "/dpc/kunf0097/data/hwid12/5ca766af-54d8-401b-b871-14ae8592c60e.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The collision between two vehicles or a motorcycle is serious, but without the presence of emergency responders or visible injuries, it's scored mid-range.). Most probably, the collision was caused by a rider losing control or not anticipating another vehicle's movement due to high speed or inadequate space for maneuver, often seen with motorcycles."
+            }
+        ]
+    },
+    {
+        "id": "87de3a81-f301-4b48-a04b-19ea35bed8df",
+        "video": "/dpc/kunf0097/data/hwid12/87de3a81-f301-4b48-a04b-19ea35bed8df.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The severity is high due to the vehicle rollover, which suggests a potential for injuries or serious damage). Probable cause of the vehicle rollover could be a sharp maneuver at high speed, such as avoiding an obstacle or sudden braking, or loss of control possibly due to the vehicle's balance or weather conditions."
+            }
+        ]
+    },
+    {
+        "id": "1712d56a-ff88-444f-8845-8d3225829cb5",
+        "video": "/dpc/kunf0097/data/hwid12/1712d56a-ff88-444f-8845-8d3225829cb5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Minor collision with stationary object, can cause congestion if on a busy road due to rubbernecking or need for towing.). vehicle likely collided with the stationary object due to driver inattention or misjudgment."
+            }
+        ]
+    },
+    {
+        "id": "9ef050e0-1eaa-4d2c-a047-f97872d7d1ae",
+        "video": "/dpc/kunf0097/data/hwid12/9ef050e0-1eaa-4d2c-a047-f97872d7d1ae.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion noted; drifting or skidding is intentional or controlled loss of control). The most probable cause of this scene is the driver's intention to drift the vehicle or potentially a loss of control due to road conditions (e.g., wet or icy roads), leading to skidding."
+            }
+        ]
+    },
+    {
+        "id": "c539bcef-3aab-48ef-ac07-83ef957eddff",
+        "video": "/dpc/kunf0097/data/hwid12/c539bcef-3aab-48ef-ac07-83ef957eddff.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The collision severity is moderate. Typically, motorcycle incidents can lead to moderate to severe injuries due to the lack of physical protection for the rider, but without more data on injuries or damages, 3 reflects probable road impact and involvement without further extrapolation.). A probable cause for the scene could be a driver's failure to notice the motorcycle, leading to the collision."
+            }
+        ]
+    },
+    {
+        "id": "f30b4db3-2c3d-4c50-8b48-8b0ef261b3f3",
+        "video": "/dpc/kunf0097/data/hwid12/f30b4db3-2c3d-4c50-8b48-8b0ef261b3f3.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision involved only one vehicle and a stationary object with no pedestrian involvement; thus, the severity is low). The likely cause of the scene may be due to driver inattention or misjudgment while maneuvering the vehicle."
+            }
+        ]
+    },
+    {
+        "id": "b1c90131-a415-40b5-89a1-19e1dc415219",
+        "video": "/dpc/kunf0097/data/hwid12/b1c90131-a415-40b5-89a1-19e1dc415219.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (moderate severity given lateral collisions often result in significant vehicle damage and possible lane blockages, causing moderate congestion and potential delays). a lateral/side impact collision without specific contextual clues on weather or other conditions, it is most probable that the collision was caused by a failure to yield at an intersection or a similar crossing point."
+            }
+        ]
+    },
+    {
+        "id": "33bdbcf3-c540-469f-9e53-b1836faed511",
+        "video": "/dpc/kunf0097/data/hwid12/33bdbcf3-c540-469f-9e53-b1836faed511.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (High severity due to the nature of head-on collisions which commonly result in significant vehicle damage and potential injuries). The most probable cause of the scene is a potential misjudgment by one or both drivers. This may involve wrong-way driving, failure to adhere to traffic signs, or unexpected circumstances leading to a lane departure."
+            }
+        ]
+    },
+    {
+        "id": "c28286a3-659e-4e1c-8a51-82e0ef612ec7",
+        "video": "/dpc/kunf0097/data/hwid12/c28286a3-659e-4e1c-8a51-82e0ef612ec7.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The severity is low since it involves a single vehicle colliding with an object; potential damage is mostly cosmetic unless exact damage details are available). The probable cause is driver inattentiveness or misjudgment leading up to the collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "9ce48f52-da6d-415d-8e3f-9abbe25a2cba",
+        "video": "/dpc/kunf0097/data/hwid12/9ce48f52-da6d-415d-8e3f-9abbe25a2cba.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Rear-end collisions can cause moderate traffic delays and vehicle damage, but without further data on injuries or vehicle condition, it appears not continuously severe). The most probable cause of the rear-end collision could be driver inattention or sudden stopping of the leading vehicle."
+            }
+        ]
+    },
+    {
+        "id": "e82671b6-30ce-4ccf-b94a-62bb337e196e",
+        "video": "/dpc/kunf0097/data/hwid12/e82671b6-30ce-4ccf-b94a-62bb337e196e.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (vulnerability of motorcyclists typically increases the severity). A probable cause of the collision could include a vehicle failing to notice the motorcycle due to a blind spot or misjudging its speed on the road."
+            }
+        ]
+    },
+    {
+        "id": "99b7524b-05bf-48e4-8863-faacf3360fac",
+        "video": "/dpc/kunf0097/data/hwid12/99b7524b-05bf-48e4-8863-faacf3360fac.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Lateral collisions can cause significant vehicle damage and potential injuries, potentially blocking traffic). The most probable cause of the scene could be a lane-changing maneuver or failure to yield, leading to a side collision."
+            }
+        ]
+    },
+    {
+        "id": "fc9c5b9b-25ea-4f91-b54e-1b3d4d1cecbf",
+        "video": "/dpc/kunf0097/data/hwid12/fc9c5b9b-25ea-4f91-b54e-1b3d4d1cecbf.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Please provide further specifics, such as video/frame or any prompts, to assign a severity rating accurately.. Provide more details for an accurate Figure. Without further context, it seems insufficient data is present; hence, no probable cause can be determined conclusively from this response."
+            }
+        ]
+    },
+    {
+        "id": "7517ee86-e83d-4a2f-9004-49d20a85396a",
+        "video": "/dpc/kunf0097/data/hwid12/7517ee86-e83d-4a2f-9004-49d20a85396a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Low impact collision with stationary object, assuming no severe vehicle damage or injuries.). Most probably the cause was limited visibility or driver inattention resulting in the collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "f631d2da-60e1-4e37-aa85-00a934a268e5",
+        "video": "/dpc/kunf0097/data/hwid12/f631d2da-60e1-4e37-aa85-00a934a268e5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Likely moderate damage, typical of rear-end collisions which can cause vehicular damage and potentially minor injuries). Inattentiveness or sudden braking likely caused the rear-end collision."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080516x01642",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080516x01642.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 16:00, congestion: medium"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 2 (Medium congestion, which can be attributed to overcast conditions reducing visibility and potentially leading to slower traffic flow). The medium congestion is most likely caused by the overcast weather, which may slightly reduce visibility and lead to cautious driving."
+            }
+        ]
+    },
+    {
+        "id": "db7ab6f9-a53f-44b9-bcf7-00751a73e2fd",
+        "video": "/dpc/kunf0097/data/hwid12/db7ab6f9-a53f-44b9-bcf7-00751a73e2fd.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Please give a severity rating from 0-5 and mention the most prominent reason for the rating. Please provide the probable cause of the accident even if not directly mentioned."
+            }
+        ]
+    },
+    {
+        "id": "bc82efe0-e4ac-40e2-9243-069a40efad4c",
+        "video": "/dpc/kunf0097/data/hwid12/bc82efe0-e4ac-40e2-9243-069a40efad4c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (Minimal congestion, primarily due to drifting or skidding, but no substantial traffic holdup).. The most probable cause of the scene is over-speeding, which led to the vehicle drifting or skidding without causing a collision."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080611x01895",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080611x01895.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 11:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (The congestion is light, likely caused by typical morning traffic flow). The most probable cause of the scene is typical morning traffic causing light congestion under overcast conditions."
+            }
+        ]
+    },
+    {
+        "id": "ae0509ad-efb9-4edf-9a72-643ecfc01837",
+        "video": "/dpc/kunf0097/data/hwid12/ae0509ad-efb9-4edf-9a72-643ecfc01837.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Limited to minor vehicular damage, no pedestrian involvement). most probable cause of the scene is driver inattention, which led to the vehicle colliding with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "95d2fbc9-71dc-4f61-8303-affe264abaa9",
+        "video": "/dpc/kunf0097/data/hwid12/95d2fbc9-71dc-4f61-8303-affe264abaa9.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (Rollovers are critical accidents due to potential severe injuries and the likelihood of multiple lane blockages). The most probable cause of the vehicle rollover could be high speed during a sharp maneuver, which destabilized the vehicle."
+            }
+        ]
+    },
+    {
+        "id": "217d5e26-1f58-4a58-9fa3-e74efb980bad",
+        "video": "/dpc/kunf0097/data/hwid12/217d5e26-1f58-4a58-9fa3-e74efb980bad.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (Head-on collisions typically involve significant force and potential injuries or fatalities). The most probable cause of the scene seems to be one or both vehicles veering into the opposite lane, resulting in a head-on collision."
+            }
+        ]
+    },
+    {
+        "id": "0a1e2775-6ac4-40f7-9d13-85b5bc4edec5",
+        "video": "/dpc/kunf0097/data/hwid12/0a1e2775-6ac4-40f7-9d13-85b5bc4edec5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion is expected in such activities). The skidding scene was most likely caused by a driver intentionally engaging in drifting maneuvers, possibly for recreation or demonstration."
+            }
+        ]
+    },
+    {
+        "id": "15e95a49-1833-4d62-99f5-187e67c0d1ef",
+        "video": "/dpc/kunf0097/data/hwid12/15e95a49-1833-4d62-99f5-187e67c0d1ef.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The prominent reason for this score is the head-on nature of the crash on a highway, which typically indicates significant force and potential risk for severe injuries or fatalities.). collision likely occurred due to one vehicle drifting into the opposite lane on the highway, possibly due to driver distraction or fatigue."
+            }
+        ]
+    },
+    {
+        "id": "0eaec988-909d-460e-b419-4bc0d7c1f367",
+        "video": "/dpc/kunf0097/data/hwid12/0eaec988-909d-460e-b419-4bc0d7c1f367.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The rear-end collision suggests moderate damage and potential traffic disruption). The most probable cause of the rear-end collision is likely due to a driver's failure to maintain appropriate following distance or distraction resulting in delayed braking."
+            }
+        ]
+    },
+    {
+        "id": "fe45b3ba-2d79-4656-b014-5160ed22d3c7",
+        "video": "/dpc/kunf0097/data/hwid12/fe45b3ba-2d79-4656-b014-5160ed22d3c7.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Typically lower severity due to the involvement of only one vehicle and a stationary object, with reduced risk of injury and minor damage).. Probable cause is driver distraction or potential misjudgment leading the vehicle to collide with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "c02f2f4d-935a-4200-b672-fe46515023c2",
+        "video": "/dpc/kunf0097/data/hwid12/c02f2f4d-935a-4200-b672-fe46515023c2.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The side/lateral collision without pedestrian involvement and potentially obstructing traffic could cause moderate disruption, potential for congestion). the nature of the collision, a side/lateral hit often occurs due to one vehicle failing to yield or violating a right-of-way. It's most probable that one of the vehicles did not notice a vehicle coming from the side, leading to the collision."
+            }
+        ]
+    },
+    {
+        "id": "c0796380-9af6-40bd-a0cc-4f6bca30c983",
+        "video": "/dpc/kunf0097/data/hwid12/c0796380-9af6-40bd-a0cc-4f6bca30c983.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Based on these factors, if there's substantial vehicle damage, pedestrian involvement, or hazardous conditions, rate higher. For minor incidents, rate lower.. Additional details like emergency responders, fire, injuries, vehicle rollover, etc., should be added based on visual clues or dataset specifics.. Severity: This is where you rate it on a scale of 0-5. For a substantial crash involving one or more vehicles with evident visible damage or injuries, rate 3-5. Mention the most prominent reason for the score.. The most probable cause of the scene would likely be driver error (such as distraction, speeding, or misjudgment), especially without specified evidence of mechanical failure or road obstructions."
+            }
+        ]
+    },
+    {
+        "id": "5432b5f1-6ebc-4546-8fab-f021ccdd3357",
+        "video": "/dpc/kunf0097/data/hwid12/5432b5f1-6ebc-4546-8fab-f021ccdd3357.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (as no congestion or road blockage from the drifting activity is observed). The scene is likely caused by intentional stunt driving or recreational activity such as drifting/skidding performed by the driver."
+            }
+        ]
+    },
+    {
+        "id": "61b0907e-9182-4f0c-8e31-73327c58e36c",
+        "video": "/dpc/kunf0097/data/hwid12/61b0907e-9182-4f0c-8e31-73327c58e36c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (Head-on collisions tend to be severe due to direct impact). The collision was most likely caused by either a driver losing control, driving in the wrong lane, or a vehicle crossing into the oncoming lane without seeing the approaching traffic due to distraction or inadequate lane markings."
+            }
+        ]
+    },
+    {
+        "id": "a03baf7e-8d4c-4e09-bda1-a7b6308d35eb",
+        "video": "/dpc/kunf0097/data/hwid12/a03baf7e-8d4c-4e09-bda1-a7b6308d35eb.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Rear-end collisions often cause significant traffic disruption, and potential damage to front and rear bumpers). The most probable cause of the accident is a sudden stop or deceleration of the lead vehicle, leading to the following vehicle not maintaining a safe distance."
+            }
+        ]
+    },
+    {
+        "id": "4fd6bccd-0264-4d6d-8898-77e9cec65d66",
+        "video": "/dpc/kunf0097/data/hwid12/4fd6bccd-0264-4d6d-8898-77e9cec65d66.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (no congestion, as drifting occurs typically in controlled and open environments). The most probable cause of the scene is recreational or intentional drifting activity by a vehicle in an open and controlled environment."
+            }
+        ]
+    },
+    {
+        "id": "628dba25-6173-4d8a-bb7f-bab56b7faaaf",
+        "video": "/dpc/kunf0097/data/hwid12/628dba25-6173-4d8a-bb7f-bab56b7faaaf.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The score is due to typical severity of side/lateral collisions that may result in moderate injuries and block road lanes.). final probable cause is likely a failure to yield the right of way, a frequent cause for side/lateral collisions at intersections."
+            }
+        ]
+    },
+    {
+        "id": "b7ba32ec-047b-4794-bbaa-f9efbfd7bfdc",
+        "video": "/dpc/kunf0097/data/hwid12/b7ba32ec-047b-4794-bbaa-f9efbfd7bfdc.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The head-on collision itself is highly dangerous and likely to cause significant traffic congestion.). The most probable cause of the head-on collision was likely due to one vehicle crossing into the path of the other, potentially due to factors such as driver distraction, fatigue, or a sudden maneuver to avoid an obstacle."
+            }
+        ]
+    },
+    {
+        "id": "5fdd01f0-65ce-4d9c-abfc-714a334ff784",
+        "video": "/dpc/kunf0097/data/hwid12/5fdd01f0-65ce-4d9c-abfc-714a334ff784.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: X (Specify reason leading to scale). Attempt an educated guess on probable cause, e.g., Distracted driving, slippery road due to rain, visibility issue at the time, etc."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080607x01837",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080607x01837.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 07:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (Light traffic flow with adequate visibility and no apparent road blockages or detours). The overcast weather and early morning time likely contribute to the overall low traffic density and light congestion."
+            }
+        ]
+    },
+    {
+        "id": "73fafc49-d158-4ce4-af69-83fe77ed9ef3",
+        "video": "/dpc/kunf0097/data/hwid12/73fafc49-d158-4ce4-af69-83fe77ed9ef3.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion caused, as the event seems to occur in an open area). Most probable cause of the skidding scene is intentional maneuvering by the driver for sport or practice, possibly on a safe and controlled route."
+            }
+        ]
+    },
+    {
+        "id": "bc904f21-0bd5-4148-ba71-0354652f18b7",
+        "video": "/dpc/kunf0097/data/hwid12/bc904f21-0bd5-4148-ba71-0354652f18b7.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Collision with a stationary object typically indicates minimal damage, assuming no exceptional circumstances). The probable cause of the scene is that the driver was likely inattentive or distracted, failing to notice the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080610x01892",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080610x01892.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 10:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (light congestion; overcast conditions have minimal impact). Probable cause of light congestion is typical morning traffic with no specific additional factors impacting it."
+            }
+        ]
+    },
+    {
+        "id": "18d6e65d-534b-431b-9249-e9ee40773c94",
+        "video": "/dpc/kunf0097/data/hwid12/18d6e65d-534b-431b-9249-e9ee40773c94.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Moderate severity due to vehicle damage and potential lane obstruction, particularly if impacts traffic flow). Distraction or misjudgment by the driver likely caused the vehicle to collide with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "997bed02-50d7-47c8-afc0-a40fb9d5cdd1",
+        "video": "/dpc/kunf0097/data/hwid12/997bed02-50d7-47c8-afc0-a40fb9d5cdd1.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The severity is rated a 3 due to the involvement of a motorcycle, which inherently poses higher risk to riders as compared to vehicle occupants). The probable cause of the scene is a failure to yield or properly check surroundings at an intersection, leading to the collision between the motorcycle and another vehicle."
+            }
+        ]
+    },
+    {
+        "id": "44f88c1f-3b03-4665-85a3-bf5bcc884e2a",
+        "video": "/dpc/kunf0097/data/hwid12/44f88c1f-3b03-4665-85a3-bf5bcc884e2a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Lateral collisions can lead to significant vehicle damage and possible injuries, but without further context, we assume moderate severity). Most likely, a failure to yield or abide by traffic signals at an intersection caused the lateral collision."
+            }
+        ]
+    },
+    {
+        "id": "5d173ab6-9ed1-4d56-9afe-f578d66c1a8c",
+        "video": "/dpc/kunf0097/data/hwid12/5d173ab6-9ed1-4d56-9afe-f578d66c1a8c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0, since drifting or skidding is often an individual action causing no traffic disruption. The most probable cause of the drifting or skidding scene could be reckless driving or the driver intentionally performing a drifting maneuver."
+            }
+        ]
+    },
+    {
+        "id": "021d67e5-7f9e-4696-a3cd-01b4162a39b1",
+        "video": "/dpc/kunf0097/data/hwid12/021d67e5-7f9e-4696-a3cd-01b4162a39b1.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion present as this was an isolated event.). The scene is likely due to a deliberate act of drifting or skidding, possibly influenced by the area's surface conditions such as wetness or slipperiness."
+            }
+        ]
+    },
+    {
+        "id": "8683f8f0-091e-4d99-af7f-4970e832cbc0",
+        "video": "/dpc/kunf0097/data/hwid12/8683f8f0-091e-4d99-af7f-4970e832cbc0.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Lack of pedestrian involvement or multi-vehicle crashing, but potential obstruction and vehicle damage are noted). on the information, the most probable cause for the scene involves the driver losing control or distraction leading to a collision with the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "bccb0b7f-467e-4ee9-ac1b-e05c853fd64a",
+        "video": "/dpc/kunf0097/data/hwid12/bccb0b7f-467e-4ee9-ac1b-e05c853fd64a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion observed, free movement in the scene). The most probable cause of the drifting or skidding is a driver's intentional maneuver, possibly for recreational purposes or loss of traction on the road surface."
+            }
+        ]
+    },
+    {
+        "id": "50d7e846-50e4-47c5-b66e-6b7058b95d28",
+        "video": "/dpc/kunf0097/data/hwid12/50d7e846-50e4-47c5-b66e-6b7058b95d28.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (A vehicle rollover often leads to significant injuries and traffic disruptions, making the severity high.). High speed and potential driver error likely led to the vehicle losing control and rolling over."
+            }
+        ]
+    },
+    {
+        "id": "74cbea5b-eb7d-4d40-958c-a8a53868a64a",
+        "video": "/dpc/kunf0097/data/hwid12/74cbea5b-eb7d-4d40-958c-a8a53868a64a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The severity is high given the nature of a rollover, which can lead to serious injuries and create significant traffic interruptions). The rollover is most likely caused by a combination of high speed and abrupt maneuvering, possibly involving an obstacle on the highway."
+            }
+        ]
+    },
+    {
+        "id": "c88cf8fd-f9d0-4c3b-9075-e00b970c1b62",
+        "video": "/dpc/kunf0097/data/hwid12/c88cf8fd-f9d0-4c3b-9075-e00b970c1b62.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision involves a stationary object; usually less severe unless involving significant vehicular speed or hazardous materials). The most probable cause is likely driver distraction or loss of vehicle control."
+            }
+        ]
+    },
+    {
+        "id": "fb3e614f-2de5-4a00-b8e3-056ddd6b4cdc",
+        "video": "/dpc/kunf0097/data/hwid12/fb3e614f-2de5-4a00-b8e3-056ddd6b4cdc.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Not specified (additional context needed for detailed information). Without additional context, it is challenging to determine the probable cause of the detected crash, but possible general contributing factors could include driver error, road conditions, or environmental influences. Additional data or video context is needed for a specific assessment."
+            }
+        ]
+    },
+    {
+        "id": "834dd006-a905-45b5-9037-0702d650c095",
+        "video": "/dpc/kunf0097/data/hwid12/834dd006-a905-45b5-9037-0702d650c095.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4, due to the potential for severe injuries and traffic congestion. The most probable cause of the scene is likely excessive speed or a sudden maneuver, leading to the vehicle losing control and rolling over."
+            }
+        ]
+    },
+    {
+        "id": "8c96760a-d752-49a8-8354-4ccfd2641d4c",
+        "video": "/dpc/kunf0097/data/hwid12/8c96760a-d752-49a8-8354-4ccfd2641d4c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (due to the involvement of a motorcycle and another vehicle in a potentially hazardous collision). Probable cause is either a sudden braking or failure to notice the motorcycle by the driver of the other vehicle, resulting in a collision."
+            }
+        ]
+    },
+    {
+        "id": "eacbbd00-6add-4644-b6fa-8a745d5e9df9",
+        "video": "/dpc/kunf0097/data/hwid12/eacbbd00-6add-4644-b6fa-8a745d5e9df9.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The rollover itself is a severe incident likely to cause serious injury and significant traffic disruption). Additional factors: Presence of emergency responders would typically be expected, significant vehicle damage observed. The most probable cause of the vehicle rollover could be due to high-speed driving, sharp maneuver, or loss of vehicle control which led to instability and overturning."
+            }
+        ]
+    },
+    {
+        "id": "9b3c3b9d-4ebf-4355-b199-0663852a037f",
+        "video": "/dpc/kunf0097/data/hwid12/9b3c3b9d-4ebf-4355-b199-0663852a037f.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (The skidding incident caused a short-term obstruction, but traffic flow quickly resumed). most probable cause for the skidding is likely due to slippery road conditions, as would occur due to rain or ice, causing a vehicle to lose traction and skid."
+            }
+        ]
+    },
+    {
+        "id": "0a244d75-6c60-4bbc-bebc-dd4a72121f37",
+        "video": "/dpc/kunf0097/data/hwid12/0a244d75-6c60-4bbc-bebc-dd4a72121f37.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The most prominent reason is the severe potential danger and blockage caused by a vehicle rollover). The probable cause of the rollover is likely due to speeding or sudden maneuvering which destabilized the vehicle, commonly occurring in such incidents."
+            }
+        ]
+    },
+    {
+        "id": "a25fd468-32a7-4091-9664-0799c28d61ce",
+        "video": "/dpc/kunf0097/data/hwid12/a25fd468-32a7-4091-9664-0799c28d61ce.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion likely if drifting/skidding is occurring in isolation). The most probable cause of the scene is likely due to driver behavior aimed at performing a drift or skid for entertainment or practice purposes, possibly in a controlled or secluded environment."
+            }
+        ]
+    },
+    {
+        "id": "557a34e3-3fd9-4d1e-a1b3-a4887725a8bb",
+        "video": "/dpc/kunf0097/data/hwid12/557a34e3-3fd9-4d1e-a1b3-a4887725a8bb.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The collision involves a stationary object which might lead to vehicle damage and possible obstruction causing inconvenience). The most probable cause of the scene is the driver's inattention or misjudgment leading to a collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080610x01879",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080610x01879.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: rain, time: 10:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 1 (Light rain may cause caution among drivers but does not appear to create significant congestion). The most probable cause of the scene is light congestion due to rainy weather conditions causing drivers to slow down for safety."
+            }
+        ]
+    },
+    {
+        "id": "cade0e50-90cd-41a6-b2e9-dd6dbf80b7f4",
+        "video": "/dpc/kunf0097/data/hwid12/cade0e50-90cd-41a6-b2e9-dd6dbf80b7f4.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Scene: Object falling and may collide with the vehicle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion observed). An object is falling which might potentially cause a collision with the vehicle. The probable cause may be an unsecured object or structural failure from the vehicle or surroundings."
+            }
+        ]
+    },
+    {
+        "id": "8d202823-6ad7-4805-8775-a85e11ef4b49",
+        "video": "/dpc/kunf0097/data/hwid12/8d202823-6ad7-4805-8775-a85e11ef4b49.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "The most probable cause of the drifting or skidding may be reckless driving or intentional drifting for recreational purposes given the absence of adverse weather conditions or road obstructions."
+            }
+        ]
+    },
+    {
+        "id": "752cf3da-4cc5-4e36-8cfa-f0c75c890840",
+        "video": "/dpc/kunf0097/data/hwid12/752cf3da-4cc5-4e36-8cfa-f0c75c890840.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 [(Collision caused some disruption but does not involve other vehicles or pedestrians, primarily scoring low due to the single-vehicle involvement and lack of serious injuries or major impact)]. most probable cause for the scene is the driver's lack of attention, which led to the vehicle colliding with the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080518x01671",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080518x01671.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: clear, time: 18:01, congestion: medium"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 3 (medium congestion due to probable moderate vehicle density; clear weather is helping maintain flow but crowd size indicating medium congestion persists). Likely cause of congestion is evening rush hour traffic."
+            }
+        ]
+    },
+    {
+        "id": "69a57868-9705-4f7b-aa6e-05bc15e559af",
+        "video": "/dpc/kunf0097/data/hwid12/69a57868-9705-4f7b-aa6e-05bc15e559af.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Minor collision with a stationary object, no pedestrian involvement or major congestion risk identified). The most probable cause of the collision is driver inattention or misjudgment leading to an impact with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "9c3fdac5-9fb3-469e-bf4e-89f9175eebc1",
+        "video": "/dpc/kunf0097/data/hwid12/9c3fdac5-9fb3-469e-bf4e-89f9175eebc1.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Likely due to typical rear-end collision impacts, which are usually not severe unless there is high speed involved).. The rear-end collision was most probably caused by the following vehicle not maintaining a safe distance or being inattentive, leading to insufficient reaction time."
+            }
+        ]
+    },
+    {
+        "id": "4cca687a-d748-41b5-8119-28a790b3c6f9",
+        "video": "/dpc/kunf0097/data/hwid12/4cca687a-d748-41b5-8119-28a790b3c6f9.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (The drifting or skidding event does not result in congestion). The most probable cause of the skidding or drifting scene is likely due to slippery road conditions, potentially from rain, leading the driver to lose control without causing a collision."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080616x00048",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080616x00048.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 16:00, congestion: medium"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 3 (Moderate number of vehicles possibly due to peak evening traffic buildup, exacerbated by overcast weather potentially reducing speed). The most probable cause of the scene is regular afternoon traffic buildup, possibly exacerbated by overcast conditions slightly reducing visibility."
+            }
+        ]
+    },
+    {
+        "id": "70bd0053-b3e0-4d00-9c70-6cfa1cea77f5",
+        "video": "/dpc/kunf0097/data/hwid12/70bd0053-b3e0-4d00-9c70-6cfa1cea77f5.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision is with a stationary object, unlikely to be severe unless the vehicle was at high speed, affecting the vehicle more than the surrounding environment). The probable cause of the collision is likely inattentive driving or driver error, such as misjudgment in handling the vehicle or failure to notice the stationary object in time."
+            }
+        ]
+    },
+    {
+        "id": "6fef72ea-003e-472a-868b-d583702c1581",
+        "video": "/dpc/kunf0097/data/hwid12/6fef72ea-003e-472a-868b-d583702c1581.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: Assess severity based on observed vehicle damage, potential injuries, and impact on traffic flow. Score should reflect these factors. The lack of additional context limits precision in scoring.. Lack of situational awareness or failure to yield likely caused the lateral collision."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080518x01677",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080518x01677.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Context: weather: overcast, time: 18:01, congestion: light"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (Light congestion due to normal traffic patterns without any significant causative factors like road blockages or adverse weather conditions). The most probable cause is simply routine traffic flow under overcast skies during early evening hours, contributing to light congestion."
+            }
+        ]
+    },
+    {
+        "id": "f91d7997-fe1e-437f-bd75-803a2dfb0333",
+        "video": "/dpc/kunf0097/data/hwid12/f91d7997-fe1e-437f-bd75-803a2dfb0333.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: side / lateral"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The most prominent reason for the score is the side/lateral nature of the collision, which can range from minor to severe damage and potential injuries, depending on speed and vehicle type). The most probable cause of this scene is likely due to a failure to yield right-of-way, possibly caused by a driver entering the road from a side street or changing lanes without proper caution."
+            }
+        ]
+    },
+    {
+        "id": "d5f3b113-f0c6-4d8e-814a-ea0dc843729c",
+        "video": "/dpc/kunf0097/data/hwid12/d5f3b113-f0c6-4d8e-814a-ea0dc843729c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Given a basic rear-end without additional factors such as injuries or fire, it is likely low to moderate unless otherwise indicated). The most probable cause for the rear-end collision could be driver distraction or sudden braking by the lead vehicle, resulting in the following vehicle not having enough time to react."
+            }
+        ]
+    },
+    {
+        "id": "4639fb6d-6d99-492a-89ce-7862e66ce35a",
+        "video": "/dpc/kunf0097/data/hwid12/4639fb6d-6d99-492a-89ce-7862e66ce35a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of accident: 4 (Due to the nature of a rollover, which can cause significant damage and potential injuries.). The most probable cause of the vehicle rollover is loss of vehicle control, potentially due to high speed or abrupt maneuvers on the road, such as sharp turns or overcorrections."
+            }
+        ]
+    },
+    {
+        "id": "37afcba7-dbeb-450a-a122-36413cd35b0f",
+        "video": "/dpc/kunf0097/data/hwid12/37afcba7-dbeb-450a-a122-36413cd35b0f.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The head-on collision corresponds with severe impacts that could result in major vehicle damage and possible injuries). The most probable cause of the head-on collision could be a driver losing control of their vehicle or drifting into the oncoming lane, potentially due to distractions, negligence, or a sudden mechanical failure."
+            }
+        ]
+    },
+    {
+        "id": "0115ea73-f4e7-46a4-bc6c-95d4fe11aa89",
+        "video": "/dpc/kunf0097/data/hwid12/0115ea73-f4e7-46a4-bc6c-95d4fe11aa89.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The severity is relatively low as it involves only one vehicle and a stationary object, so minor vehicle damage is likely). The most probable cause is driver inattention or distraction, resulting in a failure to notice or stop in front of the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "b741c65d-23c8-4d07-a7fc-147fe989f579",
+        "video": "/dpc/kunf0097/data/hwid12/b741c65d-23c8-4d07-a7fc-147fe989f579.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Minor collision as the vehicle struck a stationary object with no impact on pedestrians or significant congestion; likelihood of minor vehicular or object damage).. The scene was most likely caused by driver inattention or distraction leading to the collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "b458ea2e-c105-4727-ade7-09b3979591c4",
+        "video": "/dpc/kunf0097/data/hwid12/b458ea2e-c105-4727-ade7-09b3979591c4.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: motorcycle with another vehicle or motorcycle"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (The involvement of a motorcycle usually indicates moderate severity due to potential for injury and disruption, especially if another vehicle is involved.). The most probable cause of the collision is a failure to maintain adequate braking distance, especially considering motorcycle dynamics in traffic with another vehicle."
+            }
+        ]
+    },
+    {
+        "id": "2565b1d6-48ce-4ca9-b7ad-3b1a21c45248",
+        "video": "/dpc/kunf0097/data/hwid12/2565b1d6-48ce-4ca9-b7ad-3b1a21c45248.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion observed). The most probable cause of the scene is driving at a high speed or losing control over the vehicle while maneuvering, likely exacerbated by potentially slippery road conditions (e.g., wet road)."
+            }
+        ]
+    },
+    {
+        "id": "2158629c-ea4c-4a03-8ed7-5ac57c4e40b6",
+        "video": "/dpc/kunf0097/data/hwid12/2158629c-ea4c-4a03-8ed7-5ac57c4e40b6.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: head on"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (Head-on collisions are typically severe due to the force involved, which impacts both vehicles directly and can lead to substantial road blockages). Probable cause of this collision may be vehicle mismanagement on a two-way traffic lane, possibly due to inattentiveness or loss of control."
+            }
+        ]
+    },
+    {
+        "id": "017418df-4c10-429c-8417-0d3e2c1a8122",
+        "video": "/dpc/kunf0097/data/hwid12/017418df-4c10-429c-8417-0d3e2c1a8122.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Crash detected"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 3 (Rear-end collisions can cause moderate disruptions, but not necessarily severe based on factors like vehicle speed and response of drivers). The probable cause of the collision is likely a failure to maintain appropriate following distance, leading to insufficient time to stop."
+            }
+        ]
+    },
+    {
+        "id": "756f109b-9b82-4f07-b673-65a495d3042c",
+        "video": "/dpc/kunf0097/data/hwid12/756f109b-9b82-4f07-b673-65a495d3042c.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Direction: rear end"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (Minor vehicle damage often occurs in rear-end collisions, and these incidents are commonly less severe if no injuries are reported.). The most probable cause of this rear-end collision is likely sudden braking by the front vehicle or lack of attention by the following driver."
+            }
+        ]
+    },
+    {
+        "id": "92bbdd5d-afcc-4bbd-ab57-4d825917c75f",
+        "video": "/dpc/kunf0097/data/hwid12/92bbdd5d-afcc-4bbd-ab57-4d825917c75f.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion present, single vehicle maneuver). probable cause: The vehicle likely lost traction due to high speed and sudden maneuvering, causing it to skid or drift."
+            }
+        ]
+    }
+]

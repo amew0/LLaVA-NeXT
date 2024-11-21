@@ -1,0 +1,86 @@
+[
+    {
+        "id": "cctv052x2004080607x01847",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080607x01847.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nContext: weather: rain, time: 07:01, congestion: light, collision: no\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 0 (No collision occurred.)\nCongestion Severity: 1 (Light congestion reported despite the rain.)\nCause: The light congestion and lack of accidents are likely due to drivers being more cautious in the rain."
+            }
+        ]
+    },
+    {
+        "id": "4ee1e0ba-36d0-49d3-aca1-bce813b76c4a",
+        "video": "/dpc/kunf0097/data/hwid12/4ee1e0ba-36d0-49d3-aca1-bce813b76c4a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCollision: Yes, Direction: head on\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 4 (Head-on collisions typically result in severe damage and risk of injury.)\nCongestion Severity: 3 (Due to the head-on collision, traffic is likely disrupted with moderate congestion.)\nCause: The most probable cause of the head-on collision could be driver error such as distraction, misjudgment, or potential fatigue, exacerbated by the lack of pedestrian involvement and likely clear visibility conditions."
+            }
+        ]
+    },
+    {
+        "id": "cfd6b9b9-e32a-4c8b-a07c-bd2324abbbaa",
+        "video": "/dpc/kunf0097/data/hwid12/cfd6b9b9-e32a-4c8b-a07c-bd2324abbbaa.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCollision: No, Scene: Drifting or skidding\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 1 (No collision occurred, only skidding observed without damage.)\nCongestion Severity: 0 (No congestion observed, low vehicle density and no road blockages.)\nCause: The drifting or skidding is likely due to intentional driving behavior for recreational purposes, potentially on a wet road surface."
+            }
+        ]
+    },
+    {
+        "id": "017090fa-03f2-4069-b383-649960e5189d",
+        "video": "/dpc/kunf0097/data/hwid12/017090fa-03f2-4069-b383-649960e5189d.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCollision: Yes, Scene: vehicle rollover\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 4 (Rollover is a severe accident type with potential for serious injury and significant impact.)\nCongestion Severity: 3 (Rollover on a highway can moderately affect traffic flow, often causing significant slowing or blockages.)\nCause: The most probable cause could be high speed or a sudden maneuver on the highway, leading to the vehicle losing balance and rolling over."
+            }
+        ]
+    },
+    {
+        "id": "c180f27b-1df0-4fd5-9fee-ee79437708b1",
+        "video": "/dpc/kunf0097/data/hwid12/c180f27b-1df0-4fd5-9fee-ee79437708b1.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCollision: Yes, Involved parties: motorcycle with another vehicle or motorcycle\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 3 (There is a collision between a motorcycle and another vehicle that could imply serious injury risk.)\nCongestion Severity: 3 (Moderate vehicle density and possible lane closures contribute to moderate congestion.)\nCause: The collision between the motorcycle and the other vehicle is likely due to high speed or lane-changing misjudgment typical on highways, resulting in moderate congestion."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080518x01674",
+        "video": "/dpc/kunf0097/data/high/video/cctv052x2004080518x01674.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nContext: weather: overcast, time: 18:01, congestion: medium, collision: no\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 0 (No collision observed and no emergency situation present.)\nCongestion Severity: 2 (Medium congestion observed with vehicles moving slowly.)\nCause: The medium congestion is likely caused by typical evening traffic as it is the peak time of 18:01."
+            }
+        ]
+    }
+]

@@ -16,7 +16,7 @@ dist
 .idea
 *.swp
 .vscode
-data/*
+# data/*
 
 # Other
 .DS_Store
