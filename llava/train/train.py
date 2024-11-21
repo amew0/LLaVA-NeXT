@@ -1290,7 +1290,7 @@ def make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, dat
     """Make dataset and collator for supervised fine-tuning."""
     train_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, data_args=data_args)
     data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer)
-    if data_args.eval_data_path is None:
+    if not hasattr(data_args, 'eval_data_path'):
         return dict(train_dataset=train_dataset, data_collator=data_collator)
     
     eval_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.eval_data_path, data_args=data_args)
@@ -1462,7 +1462,7 @@ def train(attn_implementation=None):
     rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
 
     training_args.batch_eval_metrics = True
-    training_args.eval_steps = 0.01
+    training_args.eval_steps = 0.05
     if training_args.verbose_logging:
         rank0_print(f"Inspecting experiment hyperparameters:\n")
         rank0_print(f"model_args = {vars(model_args)}\n\n")
@@ -1749,16 +1749,16 @@ def train(attn_implementation=None):
     from transformers.integrations import WandbCallback
     from tqdm import tqdm
     
-    def evaluate(dataloader, log_for="eval", verbose=False):
+    def evaluate(model, dataloader, log_for="eval", verbose=False):
         all_preds, all_labels = [], []
         for i, batch in tqdm(enumerate(dataloader), desc=log_for, total=len(dataloader) if log_for=='eval' else 80, ncols=80):
-            if log_for == "train" and i*training_args.per_device_train_batch_size*2 > 80:
+            if log_for == "train" and i*training_args.per_device_train_batch_size*2 > 20:
                 break
             
             assistant_id = 77091
-            input_ids = batch.pop("input_ids")
-            attention_mask = batch.pop("attention_mask")
-            labels = batch.pop("labels")
+            input_ids = batch.pop("input_ids").to(model.device)
+            attention_mask = batch.pop("attention_mask").to(model.device)
+            labels = batch.pop("labels").to(model.device)
             assistant_idx = (input_ids == assistant_id).float().argmax(dim=1)  # indices of assistant token for each example
 
             for i in range(input_ids.shape[0]):
@@ -1798,39 +1798,44 @@ def train(attn_implementation=None):
     from transformers import TrainerCallback
 
     class MetricCallback(WandbCallback):  
+    # class MetricCallback(TrainerCallback):  
         def __init__(self):
             super().__init__()
             self.loss_adjustment = 0.0
             self.vverbose = True
-            
+        # def on_step_end(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
+        #     if state.global_step % state.eval_steps == 0:
+
         def on_evaluate(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
-            self._wandb.init(reinit=False)
-            model.eval()
-                        
-            train_results = evaluate(train_dataloader, log_for="train", verbose=self.vverbose)
-            eval_results = evaluate(eval_dataloader, log_for="eval", verbose=self.vverbose)
-            
-            train_log = {"log_for":"train", "step": state.global_step, "train/epoch": state.epoch, **train_results}
-            eval_log = {"log_for":"eval", "step": state.global_step, "train/epoch": state.epoch ,**eval_results}
-            
-            state.log_history.append(train_log)
-            state.log_history.append(eval_log)
-            
-            self._wandb.log(train_log)
-            self._wandb.log(eval_log)
-                        
-            # For custom loss
-            self.loss_adjustment = 1 - (train_results.get('train/bert_f1', 0.0) + train_results.get('train/gleu', 0.0)) / 2
-                        
-            if self.vverbose:
-                rank0_print(train_log)
-                rank0_print(eval_log)
-                self.vverbose = False
+                self._wandb.init(reinit=False)
+                model.eval()
+                            
+                train_results = evaluate(model, train_dataloader, log_for="train", verbose=self.vverbose)
+                # eval_results = evaluate(model, eval_dataloader, log_for="eval", verbose=self.vverbose)
+                
+                train_log = {"log_for":"train", "step": state.global_step, "train/epoch": state.epoch, **train_results}
+                # eval_log = {"log_for":"eval", "step": state.global_step, "train/epoch": state.epoch ,**eval_results}
+                
+                state.log_history.append(train_log)
+                # state.log_history.append(eval_log)
+                
+                self._wandb.log(train_log)
+                # self._wandb.log(eval_log)
+                            
+                # For custom loss
+                self.loss_adjustment = 1 - (train_results.get('train/bert_f1', 0.0) + train_results.get('train/gleu', 0.0)) / 2
+                            
+                if self.vverbose:
+                    rank0_print(train_log)
+                    # rank0_print(eval_log)
+                    self.vverbose = False
     
     import torch.distributed as dist
-
     class AdjustedLLaVATrainer(LLaVATrainer):
         """LLava Trainer with custom loss adjustment."""
+        def evaluate(eval_dataset: None, ignore_keys: Optional[List[str]] = None,  metric_key_prefix: str = "eval"):
+            return {'nada': 0.0}
+
         def compute_loss(self, model, inputs, return_outputs=False):
             loss, outputs = super().compute_loss(model, inputs, return_outputs=True)
 
@@ -1839,7 +1844,7 @@ def train(attn_implementation=None):
                 # print(f"Orig: {loss}")
                 loss = 0.9*loss + 0.1*self.metric_callback.loss_adjustment
                 # print(f"Adjusted: {loss}")
-                self.metric_callback.loss_adjustment = 0.0
+                self.metric_callback.loss_adjustment = 0.0               
 
             return (loss, outputs) if return_outputs else loss
     

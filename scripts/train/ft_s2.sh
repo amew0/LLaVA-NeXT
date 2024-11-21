@@ -10,8 +10,8 @@ LORA_ENABLE=True
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
 PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
 # PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1112_020005"
-# RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
-RUN_NAME="v2-lora-llava-qwen-ov-s1-1119_232036"
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
+# RUN_NAME="v2-lora-llava-qwen-ov-s1-1119_232036"
 
 DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
