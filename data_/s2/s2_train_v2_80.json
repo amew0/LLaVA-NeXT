@@ -1,0 +1,30 @@
+[
+    {
+        "id": "7517ee86-e83d-4a2f-9004-49d20a85396a",
+        "video": "hwid12/7517ee86-e83d-4a2f-9004-49d20a85396a.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCollision: Yes, Involved parties: A vehicle with a stationary object\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 2 (A single vehicle collided with a stationary object, causing damage but no pedestrian involvement.)\nCongestion Severity: 1 (Considering the low vehicle density and no significant road blockage, slight congestion may occur.)\nCause: The driver likely misjudged or lost control of the vehicle leading to the collision with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "d10724e7-224e-4eb4-846b-130552ba80f1",
+        "video": "hwid12/d10724e7-224e-4eb4-846b-130552ba80f1.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nYou are going to analyse a vehicular environment so you can assess the severity of any accident and/or congestion out of 5 along with your justification and predict the most probable cause. You will be provided with a video and scene description.\n\n#### Scene description:\nCrash detected\nA template of the output looks like:\nAccident Severity: 0-5 (Accident severity score justification)\nCongestion Severity: 0-5 (Congestion Severity score justification)\nCause: State your prediction on the most probable cause\n"
+            },
+            {
+                "from": "gpt",
+                "value": "Accident Severity: 3 (Collision was lateral with moderate vehicle density and potential road obstruction.)\nCongestion Severity: 3 (Partial road blockage at an intersection causing moderate congestion.)\nCause: The side collision at the intersection is likely due to a failure to yield right of way, affecting normal traffic flow."
+            }
+        ]
+    }
+]

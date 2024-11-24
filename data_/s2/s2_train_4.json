@@ -1,0 +1,58 @@
+[
+    {
+        "id": "c96de36c-5daa-407c-8ac3-f25748c52737",
+        "video": "hwid12/c96de36c-5daa-407c-8ac3-f25748c52737.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision with a stationary object suggests minor structural damage without indication of severe injury or major traffic disruption.). The probable cause of the scene could be driver inattention or misjudgment of distance, leading to the vehicle colliding with a stationary object."
+            }
+        ]
+    },
+    {
+        "id": "9c2672e9-10ef-47fb-b656-7481710524de",
+        "video": "hwid12/9c2672e9-10ef-47fb-b656-7481710524de.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Involved parties: A vehicle with a stationary object"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 2 (The collision involves a stationary object, so the damage might be limited to the vehicle and the object, with minimal impact unless it severely blocks the road.). The most probable cause of the collision could be driver inattention or loss of control leading to impact with the stationary object."
+            }
+        ]
+    },
+    {
+        "id": "5459e79b-d6f0-4b79-bacf-7b6e9f295cad",
+        "video": "hwid12/5459e79b-d6f0-4b79-bacf-7b6e9f295cad.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: No, Scene: Drifting or skidding"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity of congestion: 0 (No congestion present, as the situation involves intentional vehicle maneuvers.). The most probable cause of skidding or drifting is intentional maneuvering or loss of traction, possibly due to driver behavior in a controlled environment or on a slick surface."
+            }
+        ]
+    },
+    {
+        "id": "e3341ddf-1dd9-4cdc-a95e-fc9eeb223171",
+        "video": "hwid12/e3341ddf-1dd9-4cdc-a95e-fc9eeb223171.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>From the video provided along with the scene description assess two things, the Severity out of 5 and the most probable cause.\n\n#### Scene description: Collision: Yes, Scene: vehicle rollover"
+            },
+            {
+                "from": "gpt",
+                "value": "Severity: 4 (The severity is high due to the rollover, potentially causing significant injury or secondary accidents from obstacles blocking the road.). The most probable cause of the rollover could be high speed taking a sharp turn, or distraction leading to loss of control."
+            }
+        ]
+    }
+]

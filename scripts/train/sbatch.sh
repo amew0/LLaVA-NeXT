@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH -c 20
+#SBATCH -c 26
 #SBATCH -J ft-s2.sh
 #SBATCH -t 24:00:00
 #SBATCH -p gpu
@@ -11,7 +11,7 @@
 #SBATCH --mail-user=aminekidane4@gmail.com
 # SBATCH --begin=02:00:00
 # SBATCH --exclusive
-# SBATCH --nodelist=gpu-10-3
+# SBATCH --nodelist=gpu-10-2
 # SBATCH --mem-per-cpu=32000
 module load miniconda/3
 conda activate llavanext

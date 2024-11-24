@@ -1752,7 +1752,7 @@ def train(attn_implementation=None):
     def evaluate(model, dataloader, log_for="eval", verbose=False):
         all_preds, all_labels = [], []
         for i, batch in tqdm(enumerate(dataloader), desc=log_for, total=len(dataloader) if log_for=='eval' else 80, ncols=80):
-            if log_for == "train" and i*training_args.per_device_train_batch_size*2 > 20:
+            if log_for == "train" and i*training_args.per_device_train_batch_size*2 > 40:
                 break
             
             assistant_id = 77091
@@ -1803,10 +1803,10 @@ def train(attn_implementation=None):
             super().__init__()
             self.loss_adjustment = 0.0
             self.vverbose = True
-        # def on_step_end(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
-        #     if state.global_step % state.eval_steps == 0:
+        def on_step_end(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
+            if state.global_step % state.eval_steps == 0:
 
-        def on_evaluate(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
+        # def on_evaluate(self, args, state, control, model=None, tokenizer=None, train_dataloader=None, eval_dataloader=None, **kwargs):
                 self._wandb.init(reinit=False)
                 model.eval()
                             
@@ -1825,10 +1825,10 @@ def train(attn_implementation=None):
                 # For custom loss
                 self.loss_adjustment = 1 - (train_results.get('train/bert_f1', 0.0) + train_results.get('train/gleu', 0.0)) / 2
                             
-                if self.vverbose:
-                    rank0_print(train_log)
-                    # rank0_print(eval_log)
-                    self.vverbose = False
+                # if self.vverbose:
+                rank0_print(train_log)
+                # rank0_print(eval_log)
+                self.vverbose = False
     
     import torch.distributed as dist
     class AdjustedLLaVATrainer(LLaVATrainer):
@@ -1841,9 +1841,7 @@ def train(attn_implementation=None):
 
             # Adjust loss during evaluation
             if hasattr(self, 'metric_callback') and self.metric_callback.loss_adjustment:
-                # print(f"Orig: {loss}")
                 loss = 0.9*loss + 0.1*self.metric_callback.loss_adjustment
-                # print(f"Adjusted: {loss}")
                 self.metric_callback.loss_adjustment = 0.0               
 
             return (loss, outputs) if return_outputs else loss

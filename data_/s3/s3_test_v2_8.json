@@ -1,0 +1,146 @@
+[
+    {
+        "id": "f3106768-289e-476a-afcf-c817f61e5b38",
+        "video": "hwid12/f3106768-289e-476a-afcf-c817f61e5b38.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 3 (Head-on collisions are critical due to vehicle damage and potential occupant injury, possibly leading to congestion if emergency services are needed.). Most likely, the scene was caused by a driver crossing the center line, potentially due to distraction, fatigue, or a sudden maneuver to avoid an obstacle."
+            },
+            {
+                "from": "gpt",
+                "value": "A severity score of 3 indicates a moderate collision severity with possible vehicle damage and occupant injury. Given the head-on collision context, cooperative data sharing for incident reassessment is suggested. This service will utilize in-vehicle OBUs to collect image/video feeds for a multi-perspective analysis, aiding emergency services and traffic management in resolving the situation effectively."
+            }
+        ]
+    },
+    {
+        "id": "448149de-c1bc-411e-addf-4af0e6cb2870",
+        "video": "hwid12/448149de-c1bc-411e-addf-4af0e6cb2870.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 2 (The vehicle struck a stationary object, suggests moderate severity pending the object's nature and vehicle speed). The scene was most likely caused by driver distraction or misjudgment leading to a collision with a stationary object."
+            },
+            {
+                "from": "gpt",
+                "value": "A collision involving a stationary object with a severity score of 2 is observed, which is moderate. No immediate service action is required as it doesn't exceed high severity levels necessitating cooperative data sharing for incident reassessment."
+            }
+        ]
+    },
+    {
+        "id": "fe7bd4a5-f14c-4325-88df-7f24a8d13054",
+        "video": "hwid12/fe7bd4a5-f14c-4325-88df-7f24a8d13054.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 4 \u2013 The rollover itself is a significant and potentially dangerous accident; likely to require significant emergency intervention. Likely caused by loss of control possibly due to speeding, unexpected obstacle, or abrupt maneuvering which often lead to rollovers."
+            },
+            {
+                "from": "gpt",
+                "value": "A significant and potentially dangerous rollover accident is observed with a severity score of 4. The Cooperative data sharing for incident reassessment service is suggested to provide multiple perspectives and aid emergency intervention by uploading image/video feeds for detailed analysis."
+            }
+        ]
+    },
+    {
+        "id": "556099df-8daf-49e6-8d91-62697da33e17",
+        "video": "hwid12/556099df-8daf-49e6-8d91-62697da33e17.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 3 (The involvement of a motorcycle in a collision can often lead to moderate to severe damage or injury due to the vulnerability of motorcyclists).. The probable cause is often due to one of the vehicles not yielding or misjudging the other's speed, which is typical in lateral collisions."
+            },
+            {
+                "from": "gpt",
+                "value": "A collision involving a motorcycle is observed with a severity score of 3. Cooperative data sharing for incident reassessment is suggested to gather comprehensive data, enabling further analysis of the collision from multiple perspectives to better understand and manage the situation."
+            }
+        ]
+    },
+    {
+        "id": "37aee43e-e524-4696-9ea9-a252ae6f6f26",
+        "video": "hwid12/37aee43e-e524-4696-9ea9-a252ae6f6f26.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 3 (Motorcycle collisions can cause serious rider injuries and moderate vehicular damage, leading to road blockages and congestion). The most probable cause of the scene is likely the result of a failure to yield or maintain lane discipline, leading to the collision involving a motorcycle and another vehicle/motorcycle."
+            },
+            {
+                "from": "gpt",
+                "value": "A collision involving a motorcycle with a severity score of 3 is observed, indicating moderate impact and potential road blockage. Cooperative data sharing for incident reassessment is suggested to gather comprehensive information for accurate analysis and response."
+            }
+        ]
+    },
+    {
+        "id": "8a10527a-c163-424b-8e85-c3f7bf45622f",
+        "video": "hwid12/8a10527a-c163-424b-8e85-c3f7bf45622f.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity: 2 (Since it is a rear-end collision, typically lower impact than head-on collisions. There is no information on injuries or severe vehicle damage which indicates a minor accident).. It is likely that the rear-end collision was caused due to one vehicle following too closely and failing to maintain a safe stopping distance."
+            },
+            {
+                "from": "gpt",
+                "value": "A minor rear-end collision is observed, and the severity score is 2. No service is required as this is not a high-severity accident or congestion situation. Everything is operating smoothly."
+            }
+        ]
+    },
+    {
+        "id": "c83a05df-6ae4-4cf9-9397-bfe20aea9515",
+        "video": "hwid12/c83a05df-6ae4-4cf9-9397-bfe20aea9515.mp4",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity of congestion: 0 (no congestion observed because the road is clear, and an open road without other vehicles predominantly has drifting/skidding.). The most probable cause of the scene is likely deliberate reckless driving or performing stunts (such as drifting/skidding)."
+            },
+            {
+                "from": "gpt",
+                "value": "No accident detected and congestion severity is low. Everything is operating smoothly, and no service is required."
+            }
+        ]
+    },
+    {
+        "id": "cctv052x2004080616x00058",
+        "video": "video/cctv052x2004080616x00058.avi",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "## Prompt: Deployable Service Recommender\n\nYou will act as a deployable service recommender based on the provided context.\n\nIn a vehicular environment, you will receive two critical pieces of information:\n\n    - Severity:\n        If a collision/accident is detected, this score reflects its severity. If not, it relates to the congestion level. The score ranges from 0 to 5, derived from deep environmental analysis. Additionally, the primary factor influencing this score will be provided.\n    - Cause (most probable one):\n        This refers to the most probable cause responsible for the situation, whether it is an accident or congestion.\n\nBased on this context, you will recommend one of the following services:\n\n### Services\n    #### Cooperative data sharing for incident reassessment\n        Use Case: High collision/accident severity.\n        Action: Open a service that utilizes in-vehicle OBUs (On-Board Units) to upload image/video feeds to a server for further analysis from multiple perspectives.\n    #### Bandwidth Scaling Service to overcome resource scarcity\n        Use Case: High congestion severity.\n        Action: Overcome bandwidth limitations by increasing device bandwidth, enabling bandwidth-intensive services.\n    #### (This is not a service, it's just a No-op for cases not at the top)\n        Use Case: No accident detected and congestion severity is low.\n        Action: No service is required. Simply note that everything is operating smoothly.\n\n### Response Style\n    This is a **zero-shot prompt**, so **DO NOT** ask for additional information.\n    Output must be concise and direct. Avoid irrelevant or lengthy sentences.\n\n### Example Response:\n    Here is an example, although you are allowed to customize it as you feel.\n    \"[some context you grasped] is observed and the severity score is [the score], [corresponding service] is suggested [with some justification, i.e what the service intends to solve].\""
+            },
+            {
+                "from": "human",
+                "value": "Severity of congestion: 2 (medium congestion potentially due to typical afternoon traffic volume, not exacerbated by weather or road conditions). The most probable cause of the scene is typical daily traffic patterns around 16:00 leading to medium congestion."
+            },
+            {
+                "from": "gpt",
+                "value": "Medium congestion with a severity score of 2 is observed, indicating typical daily traffic patterns. No service is required as conditions are moderate and operating smoothly."
+            }
+        ]
+    }
+]

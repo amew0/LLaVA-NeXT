@@ -1,1 +1,1 @@
-squeue --Format=JobArrayID:10,Account:10,Partition:6,Name:8,UserName:20,State:10,TimeUsed:16,EndTime:20,NumNodes:6,NumCPUs:6,ReasonList:10 -p gpu
+squeue --Format=JobArrayID:10,Account:10,Partition:6,Name:8,UserName:20,State:10,TimeUsed:16,StartTime:20,EndTime:20,NumNodes:6,NumCPUs:6,ReasonList:10 -p gpu
