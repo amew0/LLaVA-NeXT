@@ -1458,11 +1458,11 @@ def train(attn_implementation=None):
     model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     
     # training_args.report_to = []
-    data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_test_v2_6.json"
-    rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
+    # data_args.eval_data_path = "/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_test_v2_6.json"
+    # rank0_print(f"EVAL_DATA_PATH: {data_args.eval_data_path}")
 
-    training_args.batch_eval_metrics = True
-    training_args.eval_steps = 0.05
+    # training_args.batch_eval_metrics = True
+    # training_args.eval_steps = 0.05
     if training_args.verbose_logging:
         rank0_print(f"Inspecting experiment hyperparameters:\n")
         rank0_print(f"model_args = {vars(model_args)}\n\n")
@@ -1850,9 +1850,9 @@ def train(attn_implementation=None):
     trainer = AdjustedLLaVATrainer(model=model, 
                            tokenizer=tokenizer, 
                            args=training_args,
-                           callbacks=[metric_callback],
+                        #    callbacks=[metric_callback],
                            **data_module)
-    trainer.metric_callback = metric_callback
+    # trainer.metric_callback = metric_callback
     torch.cuda.empty_cache()
 
     if list(pathlib.Path(training_args.output_dir).glob("checkpoint-*")):

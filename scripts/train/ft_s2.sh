@@ -9,11 +9,11 @@ LORA_ENABLE=True
 
 VISION_MODEL_VERSION="google/siglip-so400m-patch14-384"
 PREV_STAGE_CHECKPOINT=lmms-lab/llava-onevision-qwen2-0.5b-ov
-# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1112_020005"
-RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-s1-$(date +%m%d_%H%M%S)"
-# RUN_NAME="v2-lora-llava-qwen-ov-s1-1119_232036"
+# PREV_STAGE_CHECKPOINT="/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1-1028_125343"
+RUN_NAME="$( [[ "$LORA_ENABLE" == "True" ]] && echo "v2-lora-" || echo "v2-" )llava-qwen-ov-direct-$(date +%m%d_%H%M%S)"
+# RUN_NAME="v2-lora-llava-qwen-ov-direct-1111_185928"
 
-DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s1/s1_train_v2.json
+DATA_PATH=/home/kunet.ae/ku5001069/LLaVA-NeXT/data/s2/s2_train_v2.json
 OUTPUT_DIR=/dpc/kunf0097/out/checkpoints/$RUN_NAME
 
 echo "NCCl_SOCKET_IFNAME: ${NCCL_SOCKET_IFNAME}"
@@ -53,7 +53,7 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NN
     --bf16 False \
     --run_name $RUN_NAME \
     --output_dir ${OUTPUT_DIR} \
-    --num_train_epochs 8 \
+    --num_train_epochs 16 \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 1 \
@@ -62,8 +62,8 @@ ACCELERATE_CPU_AFFINITY=1 torchrun --nproc_per_node="${NUM_GPUS}" --nnodes="${NN
     --save_steps 0.1 \
     --save_total_limit 1 \
     --learning_rate 1e-5 \
-    --weight_decay 0.01 \
-    --warmup_ratio 0.08 \
+    --weight_decay 0. \
+    --warmup_ratio 0.03 \
     --lr_scheduler_type "linear" \
     --logging_steps 1 \
     --tf32 False \
