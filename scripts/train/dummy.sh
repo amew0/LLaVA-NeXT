@@ -10,7 +10,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=aminekidane4@gmail.com
 # SBATCH --exclusive
-#SBATCH --nodelist=gpu-10-4
+#SBATCH --nodelist=gpu-10-1
 module load miniconda/3
 conda activate llavanext
 echo "Finally - out of queue" 

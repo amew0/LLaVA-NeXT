@@ -54,7 +54,7 @@ already_generated = False
 # jmodel = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct", device_map="auto")
 
 example_paths = ["data/s2/s2_test_v2.json"]
-model_path = "/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-direct-1128_092613"
+model_path = "/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1s2-1128_232222"
 for examples_path in example_paths:
     save_file = f"out/Qwen2-7B-Instruct/{examples_path.split('/')[-1].split('.')[0]}_{model_path.split('/')[-1]}.json"
     print(f"\n\nExamples to evaluate: {examples_path}")
@@ -139,8 +139,8 @@ for examples_path in example_paths:
         # losses.append(loss)
 
         if i == 0:
-            print(f"Expected: {expected_text}")
-            print(f"Generated: {generated_text}")
+            print(f"## Expected:\n{expected_text}")
+            print(f"## Generated:\n{generated_text}")
 
         json_data.append(
             {

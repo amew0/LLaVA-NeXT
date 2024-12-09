@@ -75,7 +75,8 @@ files_to_evaluate = [
     # # s3
     # "out/Qwen2-7B-Instruct/s3_test_v2_7b-v2-hf-llava-qwen-ov-s3-1030_122125.json",
     # "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-s2-1127_162428.json",
-    "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-direct-1128_092613.json" # 16 epochs
+    # "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-direct-1128_092613.json", # 16 epochs
+    "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-s1s2-1128_232222.json", # 16 epochs
 ]
 
 
