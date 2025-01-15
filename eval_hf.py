@@ -1,3 +1,4 @@
+print("Loading libraries...")
 import evaluate
 from datetime import datetime
 from tqdm import tqdm
@@ -76,7 +77,20 @@ files_to_evaluate = [
     # "out/Qwen2-7B-Instruct/s3_test_v2_7b-v2-hf-llava-qwen-ov-s3-1030_122125.json",
     # "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-s2-1127_162428.json",
     # "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-direct-1128_092613.json", # 16 epochs
-    "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-s1s2-1128_232222.json", # 16 epochs
+    # "out/Qwen2-7B-Instruct/s2_test_v2_v2-llava-qwen-ov-s1s2-1128_232222.json", # 16 epochs
+    
+    # on s2m (modified s2)
+    # 0.5b
+    # "out/Qwen2-7B-Instruct/m_s2_test_v2m_llava-onevision-qwen2-0.5b-ov.json",
+    # "out/Qwen2-7B-Instruct/m_s2_test_v2m_v2-llava-qwen-ov-s1-1028_125343.json",
+    # "out/Qwen2-7B-Instruct/m_s2_test_v2m_v2-llava-qwen-ov-direct-1111_185928.json",
+    # "out/Qwen2-7B-Instruct/m_s2_test_v2m_v2-llava-qwen-ov-s2-1127_162428.json",  
+    # 7b
+    "out/Qwen2-7B-Instruct/m_s2_test_v2m_hf_llava-onevision-qwen2-7b-ov-hf.json",
+    "out/Qwen2-7B-Instruct/m_s2_test_v2m_hf_7b-v2-hf-llava-qwen-ov-s1-1027_174437.json",
+    "out/Qwen2-7B-Instruct/m_s2_test_v2m_hf_7b-v2-hf-llava-qwen-ov-s2-1125_151101.json",
+    "out/Qwen2-7B-Instruct/m_s2_test_v2m_hf_7b-v2-hf-llava-qwen-ov-s2-1126_143318.json",
+    
 ]
 
 

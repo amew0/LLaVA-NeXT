@@ -1,3 +1,4 @@
+print("Loading libraries...")
 import torch
 from tqdm import tqdm
 
@@ -53,10 +54,11 @@ already_generated = False
 # jtokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 # jmodel = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-7B-Instruct", device_map="auto")
 
-example_paths = ["data/s2/s2_test_v2.json"]
-model_path = "/dpc/kunf0097/.cache/huggingface/hub/v2-llava-qwen-ov-s1s2-1128_232222"
+dir="/dpc/kunf0097/.cache/huggingface/hub"
+example_paths = ["data/s2/s2_test_v2m1.json"]
+model_path = f"{dir}/{sys.argv[1]}" if len(sys.argv) > 1 else "lmms-lab/llava-onevision-qwen2-0.5b-ov"
 for examples_path in example_paths:
-    save_file = f"out/Qwen2-7B-Instruct/{examples_path.split('/')[-1].split('.')[0]}_{model_path.split('/')[-1]}.json"
+    save_file = f"out/Qwen2-7B-Instruct/m_{examples_path.split('/')[-1].split('.')[0]}_{model_path.split('/')[-1]}.json"
     print(f"\n\nExamples to evaluate: {examples_path}")
     print(f"Model path: {model_path}")
     print(f"Save path: {save_file}\n\n")
