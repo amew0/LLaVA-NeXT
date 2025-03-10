@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -n 1
-#SBATCH -c 52
-#SBATCH --job-name=1d
+#SBATCH -c 48
+#SBATCH --job-name=3d
 #SBATCH -t 3-00:00:00
 #SBATCH -p gpu
 #SBATCH -A kunf0097
@@ -18,5 +18,4 @@ echo "Running on $(hostname)"
 nvidia-smi
 
 # /home/kunet.ae/ku5001069/LLaVA-NeXT/scripts/train/ft_s2.sh
-python -c "while True: pass"
-
+python -c "import time; time.sleep(3*86400)"

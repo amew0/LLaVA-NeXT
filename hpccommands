@@ -1,1 +1,3 @@
-squeue --Format=JobArrayID:10,Account:10,Partition:6,Name:8,UserName:20,State:10,TimeUsed:16,StartTime:20,EndTime:20,NumNodes:6,NumCPUs:6,ReasonList:10 -p gpu
+# squeue --Format=JobArrayID:10,Account:10,Partition:6,Name:8,UserName:20,State:10,TimeUsed:16,StartTime:20,EndTime:20,NumNodes:6,NumCPUs:6,ReasonList:10 -p gpu
+squeue --Format=JobArrayID:10,Account:10,Partition:6,Name:8,UserName:20,State:10,TimeUsed:16,StartTime:20,EndTime:20,NumNodes:6,NumCPUs:6,ReasonList:25 -p gpu -t running
+# squeue -o "%.18i %.9P %.8j %.8u %.2t %.10M %.10l %.6D %R %.20S %.20e" -p gpu
